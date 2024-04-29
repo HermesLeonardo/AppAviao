@@ -9,16 +9,17 @@ class login extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-          title:
-              const Image(image: AssetImage("lib/assets/images/dogdino.png"))),
+        title: const Text("AIR TRAVEL"),
+        backgroundColor: const Color.fromARGB(255, 69, 159, 227),
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(27),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.deepPurple,
-              Colors.pinkAccent,
+              Color.fromARGB(255, 41, 50, 65),
+              Color.fromARGB(255, 41, 50, 65),
             ],
           ),
         ),
@@ -27,7 +28,7 @@ class login extends StatelessWidget {
           children: [
             const SizedBox(height: 30),
             const Text(
-              "Digite os dados de acesso nos campos abaixo.",
+              "Digite suas Credenciais para o acesso.",
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -64,7 +65,7 @@ class login extends StatelessWidget {
               width: double.infinity,
               child: CupertinoButton(
                 padding: const EdgeInsets.all(17),
-                color: Colors.greenAccent,
+                color: const Color.fromARGB(255, 69, 159, 227),
                 child: const Text(
                   "Acessar",
                   style: TextStyle(
