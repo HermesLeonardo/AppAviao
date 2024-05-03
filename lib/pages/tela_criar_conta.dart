@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class criar_conta extends StatelessWidget {
-  const criar_conta({super.key});
+class criarconta extends StatelessWidget {
+  const criarconta({super.key});
 
   @override
   Widget build(BuildContext context) {

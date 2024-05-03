@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -90,7 +91,12 @@ class login extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w600),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const criarconta()),
+                  );
+                },
               ),
             ),
           ],
