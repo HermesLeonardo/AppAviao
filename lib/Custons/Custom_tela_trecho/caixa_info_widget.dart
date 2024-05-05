@@ -25,7 +25,7 @@ class TrechoInfoWidget extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: const Color.fromARGB(255, 236, 6, 6)),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
