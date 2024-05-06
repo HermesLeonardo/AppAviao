@@ -1,27 +1,44 @@
 import 'package:appaviao/pages/tela_criar_conta.dart';
+import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/pages/tela_inicial.dart';
 
 class login extends StatelessWidget {
-  const login({super.key});
+  login({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text("AIR TRAVEL"),
         backgroundColor: const Color.fromARGB(255, 69, 159, 227),
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(27),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 41, 50, 65),
-              Color.fromARGB(255, 41, 50, 65),
-            ],
+      body: Stack(
+        children: [
+          ClipRRect(
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(200)),
+            child: Container(
+              height: size.height * 0.4,
+              width: size.width * 1,
+              color: const Color.fromARGB(255, 0, 53, 84),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: size.height * 0.5,
+              width: size.height,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(1)),
+              ),
+            ),
           ),
         ),
         child: Column(
