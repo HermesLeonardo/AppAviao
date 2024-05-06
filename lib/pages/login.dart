@@ -1,4 +1,5 @@
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
@@ -108,11 +109,17 @@ class login extends StatelessWidget {
                       child: const Text(
                         "Crie sua conta",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 16, 33, 186),
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const criarconta()),
+                        );
+                      },
                     ),
                   ),
                 ],
