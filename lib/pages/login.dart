@@ -108,7 +108,7 @@ class login extends StatelessWidget {
                       child: const Text(
                         "Crie sua conta",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 16, 33, 186),
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
