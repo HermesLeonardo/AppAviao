@@ -1,4 +1,5 @@
 import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 //import 'package:appaviao/pages/telateste.dart';
 import 'package:flutter/material.dart';
 
