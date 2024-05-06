@@ -1,4 +1,4 @@
-//No uso de navegadores para rodar a aplicação, desmarcar esse import
+//No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
 //import 'dart:html';
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
