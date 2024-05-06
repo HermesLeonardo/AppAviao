@@ -36,7 +36,7 @@ class TrechoInfoWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'De: $de   -   Para: $para',
+              'De: $de    -    Para: $para',
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 1),
