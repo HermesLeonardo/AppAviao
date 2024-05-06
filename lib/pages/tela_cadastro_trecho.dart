@@ -1,5 +1,5 @@
+
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
-import 'dart:html';
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
