@@ -1,9 +1,5 @@
-import 'package:appaviao/pages/login.dart';
-import 'package:appaviao/pages/tela_cadastro_trecho.dart';
-//import 'package:appaviao/pages/telateste.dart';
+import 'package:appaviao/pages/tela_cadastro_trecho.dart';  
 import 'package:flutter/material.dart';
-
-//import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +17,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: login());
+        home: const tela_cadastro_trecho());
   }
 }
