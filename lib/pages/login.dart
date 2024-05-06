@@ -53,6 +53,7 @@ class login extends StatelessWidget {
                   const Text(
                     "LOGIN.",
                     style: TextStyle(
+                      fontSize: 30,
                       color: Colors.white,
                     ),
                   ),
