@@ -46,6 +46,7 @@ class login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Image.asset('assets/images/aviao.png'),
                   const SizedBox(height: 30),
                   const SizedBox(
                     height: 330,
@@ -54,9 +55,10 @@ class login extends StatelessWidget {
                     "LOGIN.",
                     style: TextStyle(
                       fontSize: 30,
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
+
                   const SizedBox(height: 30),
                   custom_from_login(
                     labelText: "Nome",
@@ -99,21 +101,18 @@ class login extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 7),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white70, width: 0.8),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: CupertinoButton(
-                      child: const Text(
-                        "Crie sua conta",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      onPressed: () {},
-                    ),
+                  CupertinoButton(
+                    color: const Color.fromARGB(255, 39, 86, 157),
+                    child: const Text("Cadastrar Conta"),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const tela_inicial()));
+                      }
+                    },
                   ),
                 ],
               ),
