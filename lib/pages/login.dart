@@ -1,4 +1,5 @@
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
