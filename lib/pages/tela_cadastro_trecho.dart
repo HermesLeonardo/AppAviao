@@ -1,5 +1,5 @@
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
-import 'dart:html';
+//import 'dart:html';
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
@@ -164,11 +164,11 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
             ),
             if (trechoInfoWidgets.isNotEmpty)
               SizedBox(
-                height: 300, // Defina uma altura adequada
+                height: 500, // Defina uma altura adequada
                 child: ListView.builder(
                   itemCount: trechoInfoWidgets.length,
                   itemBuilder: (context, index) {
-                    return trechoInfoWidgets[index];
+                    return (trechoInfoWidgets[index]);
                   },
                 ),
               ),
