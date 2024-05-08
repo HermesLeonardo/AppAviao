@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,11 +24,17 @@ class login extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius:
-                const BorderRadius.vertical(bottom: Radius.circular(200)),
+                const BorderRadius.vertical(bottom: Radius.circular(450)),
             child: Container(
-              height: size.height * 0.4,
-              width: size.width * 1,
-              color: const Color.fromARGB(255, 0, 53, 84),
+              height: size.height * 0.5,
+              width: size.width * 5,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 0, 48, 73),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/aviao.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           Align(
@@ -49,15 +57,17 @@ class login extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
                   const SizedBox(
-                    height: 330,
+                    height: 260,
                   ), //espaço entre os campos
                   const Text(
                     "LOGIN.",
                     style: TextStyle(
+                      fontFamily: "Times New Roman",
                       fontSize: 30,
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
+
                   const SizedBox(height: 30),
                   custom_from_login(
                     labelText: "Nome",
@@ -100,27 +110,18 @@ class login extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 7),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white70, width: 0.8),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: CupertinoButton(
-                      child: const Text(
-                        "Crie sua conta",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 16, 33, 186),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      onPressed: () {
+                  CupertinoButton(
+                    color: const Color.fromARGB(255, 39, 86, 157),
+                    child: const Text("Cadastrar Conta"),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const criarconta()),
-                        );
-                      },
-                    ),
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const tela_inicial()));
+                      }
+                    },
                   ),
                 ],
               ),
