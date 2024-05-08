@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
@@ -62,7 +60,6 @@ class login extends StatelessWidget {
                   const Text(
                     "LOGIN.",
                     style: TextStyle(
-                      fontFamily: "Times New Roman",
                       fontSize: 30,
                       color: Colors.blue,
                     ),
@@ -119,7 +116,7 @@ class login extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const tela_inicial()));
+                                builder: (context) => const criarconta()));
                       }
                     },
                   ),
