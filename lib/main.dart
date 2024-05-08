@@ -1,6 +1,7 @@
 import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
+import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 void main() {

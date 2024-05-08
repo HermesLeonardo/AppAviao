@@ -5,6 +5,7 @@ class TrechoInfoWidget extends StatelessWidget {
   final String para;
   final String trecho;
   final String corredor;
+  final String proa;
   final Function() onEdit;
   final Function() onDelete;
 
@@ -14,6 +15,7 @@ class TrechoInfoWidget extends StatelessWidget {
     required this.para,
     required this.trecho,
     required this.corredor,
+    required this.proa,
     required this.onEdit,
     required this.onDelete,
   });
@@ -29,29 +31,25 @@ class TrechoInfoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(1.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '$de - $para',
+              'De: $de     -     Para: $para',
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 1),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Trecho: $trecho',
+                  'Trecho: $trecho    -    Corredor: $corredor    -    Proa: $proa',
                   style: const TextStyle(fontSize: 14),
-                ),
-                Text(
-                  'Corredor: $corredor',
-                  style: const TextStyle(fontSize: 14),
-                ),
+                )
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 1),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -60,7 +58,7 @@ class TrechoInfoWidget extends StatelessWidget {
                   icon: const Icon(Icons.edit),
                   label: const Text('Alterar'),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 ElevatedButton.icon(
                   onPressed: onDelete,
                   icon: const Icon(Icons.delete),

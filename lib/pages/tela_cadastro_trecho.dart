@@ -1,4 +1,8 @@
-import 'dart:html';
+
+//No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
+
+//import 'dart:html';
+
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
@@ -50,6 +54,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
           para: _formData['Para']!,
           trecho: _formData['Trecho']!,
           corredor: _formData['Corredor']!,
+          proa: _formData['Proa']!,
           onEdit: () {},
           onDelete: () {},
         ),
@@ -139,6 +144,9 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ), //espaço entre os campos
               ],
             ),
+            const SizedBox(
+              width: 50,
+            ),
             Row(
               children: <Widget>[
                 Expanded(
@@ -155,21 +163,20 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ), //espaço entre os campos
-
-                const SizedBox(
-                  width: 10,
-                ), //espaço
-
-                const SizedBox(
-                  width: 10,
-                ),
               ],
             ),
+            if (trechoInfoWidgets.isNotEmpty)
+              SizedBox(
+                height: 500, // Defina uma altura adequada
+                child: ListView.builder(
+                  itemCount: trechoInfoWidgets.length,
+                  itemBuilder: (context, index) {
+                    return (trechoInfoWidgets[index]);
+                  },
+                ),
+              ),
             const SizedBox(
-              width: 300,
+              height: 10,
             ),
             ElevatedButton(
               onPressed: () {
@@ -180,16 +187,9 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Adicionar Trecho"),
             ),
-            if (trechoInfoWidgets.isNotEmpty)
-              SizedBox(
-                height: 300, // Defina uma altura adequada
-                child: ListView.builder(
-                  itemCount: trechoInfoWidgets.length,
-                  itemBuilder: (context, index) {
-                    return trechoInfoWidgets[index];
-                  },
-                ),
-              ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
