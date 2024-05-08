@@ -1,5 +1,4 @@
 import 'dart:html';
-
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
@@ -110,6 +109,27 @@ class login extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 7),
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white70, width: 0.8),
+                        borderRadius: BorderRadius.circular(7)),
+                    child: CupertinoButton(
+                      child: const Text(
+                        "Crie sua conta",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 16, 33, 186),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
+                      ),  
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Cadastro()),
+                        );
+                      },
+                    ),
                   CupertinoButton(
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
