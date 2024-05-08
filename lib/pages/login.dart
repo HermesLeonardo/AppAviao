@@ -111,12 +111,12 @@ class login extends StatelessWidget {
                             color: Color.fromARGB(255, 16, 33, 186),
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
-                      ),
+                      ),  
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const criarconta()),
+                              builder: (context) => Cadastro()),
                         );
                       },
                     ),
