@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,11 +24,17 @@ class login extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius:
-                const BorderRadius.vertical(bottom: Radius.circular(200)),
+                const BorderRadius.vertical(bottom: Radius.circular(450)),
             child: Container(
-              height: size.height * 0.4,
-              width: size.width * 1,
-              color: const Color.fromARGB(255, 0, 53, 84),
+              height: size.height * 0.5,
+              width: size.width * 5,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 0, 48, 73),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/aviao.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           Align(
@@ -47,14 +55,14 @@ class login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/aviao.png'),
                   const SizedBox(height: 30),
                   const SizedBox(
-                    height: 330,
+                    height: 260,
                   ), //espaço entre os campos
                   const Text(
                     "LOGIN.",
                     style: TextStyle(
+                      fontFamily: "Times New Roman",
                       fontSize: 30,
                       color: Colors.blue,
                     ),

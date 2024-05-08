@@ -24,9 +24,9 @@ class tela_inicial extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(bottom: Radius.circular(200)),
               child: Container(
-                height: size.height * 0.4,
-                width: size.width * 1,
-                color: const Color.fromARGB(255, 0, 53, 84),
+                height: size.height * 0.6,
+                width: size.width * 0.5,
+                color: const Color.fromARGB(255, 0, 48, 73),
               ),
             ),
             Align(
@@ -36,7 +36,8 @@ class tela_inicial extends StatelessWidget {
                 width: size.height,
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 255, 255, 255),
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(1)),
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(120)),
                 ),
               ),
             ),
@@ -51,7 +52,7 @@ class tela_inicial extends StatelessWidget {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 0, 53, 84)),
+                          const Color.fromARGB(255, 69, 159, 227)),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -59,11 +60,13 @@ class tela_inicial extends StatelessWidget {
                           MaterialPageRoute(
                               builder: ((context) =>
                                   const tela_cadastro_trecho())));
-                      print('Cadastrar Trecho');
                     },
                     child: const Text(
                       'Cadastrar Trecho',
-                      style: TextStyle(fontSize: 32),
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Color.fromARGB(255, 247, 247, 247),
+                      ),
                     ),
                   ),
                 ),
@@ -74,14 +77,16 @@ class tela_inicial extends StatelessWidget {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 0, 53, 84)),
+                          const Color.fromARGB(255, 69, 159, 227)),
                     ),
                     onPressed: () {
                       //print('Alterar Informações do Cadastro');
                     },
                     child: const Text(
                       'Alterar Informações do Cadastro',
-                      style: TextStyle(fontSize: 32),
+                      style: TextStyle(
+                          fontSize: 32,
+                          color: Color.fromARGB(255, 247, 247, 247)),
                     ),
                   ),
                 ),
@@ -92,23 +97,25 @@ class tela_inicial extends StatelessWidget {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 0, 53, 84)),
+                          const Color.fromARGB(255, 69, 159, 227)),
                     ),
                     onPressed: () {
                       //print('Cadastrar Aeroporto');
                     },
                     child: const Text(
                       'Cadastrar Aeroporto',
-                      style: TextStyle(fontSize: 32),
+                      style: TextStyle(
+                          fontSize: 32,
+                          color: Color.fromARGB(255, 247, 247, 247)),
                     ),
                   ),
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(
+                  height: 1,
+                ),
+                const SizedBox(height: 1.0),
                 ElevatedButton(
-                    onPressed: () {
-                      //print('Iniciar Viagem');
-                    },
-                    child: const Text('Iniciar Viagem')),
+                    onPressed: () {}, child: const Text('Iniciar Viagem')),
               ],
             )),
           ],
