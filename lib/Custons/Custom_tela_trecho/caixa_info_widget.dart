@@ -5,7 +5,11 @@ class TrechoInfoWidget extends StatelessWidget {
   final String para;
   final String trecho;
   final String corredor;
+  final String altcorredor;
+  final String frequencia;
+  final String frequenciaalter;
   final String proa;
+  final String Dist184MN;
   final Function() onEdit;
   final Function() onDelete;
 
@@ -15,7 +19,11 @@ class TrechoInfoWidget extends StatelessWidget {
     required this.para,
     required this.trecho,
     required this.corredor,
+    required this.altcorredor,
+    required this.frequencia,
+    required this.frequenciaalter,
     required this.proa,
+    required this.Dist184MN,
     required this.onEdit,
     required this.onDelete,
   });
