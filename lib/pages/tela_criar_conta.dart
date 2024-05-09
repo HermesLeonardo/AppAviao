@@ -3,12 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
 
-class Cadastro extends StatelessWidget {
-  Cadastro({Key? key}) : super(key: key);
+class tela_criar_conta extends StatelessWidget {
+  const tela_criar_conta({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Movendo a declaração da variável para dentro do método build
+    final GlobalKey<FormState> formKey = GlobalKey<
+        FormState>(); // Movendo a declaração da variável para dentro do método build
 
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -20,7 +21,8 @@ class Cadastro extends StatelessWidget {
       body: Stack(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(200)),
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(200)),
             child: Container(
               height: size.height * 0.4,
               width: size.width * 1,
@@ -41,7 +43,7 @@ class Cadastro extends StatelessWidget {
           SingleChildScrollView(
             padding: const EdgeInsets.all(27),
             child: Form(
-              key: _formKey,
+              key: formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -134,8 +136,8 @@ class Cadastro extends StatelessWidget {
                     color: const Color.fromARGB(255, 69, 159, 227),
                     child: const Text("Cadastrar"),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
                       }
                     },
                   ),
@@ -152,12 +154,11 @@ class Cadastro extends StatelessWidget {
                             color: Color.fromARGB(255, 16, 33, 186),
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
-                      ),  
+                      ),
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => login()),
+                          MaterialPageRoute(builder: (context) => login()),
                         );
                       },
                     ),
