@@ -107,11 +107,18 @@ class login extends StatelessWidget {
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
+<<<<<<< HEAD
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => login()));
                       }
+=======
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Cadastro()));
+>>>>>>> d84f39872293642a3b7cdf34a0d005466e491149
                     },
                   ),
                 ],

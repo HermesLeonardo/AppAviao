@@ -39,7 +39,7 @@ class TrechoInfoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(1.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,20 +52,12 @@ class TrechoInfoWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Trecho: $trecho',
+                  'Trecho: $trecho    -    Corredor: $corredor    -    Proa: $proa',
                   style: const TextStyle(fontSize: 14),
-                ),
-                Text(
-                  'Corredor: $corredor',
-                  style: const TextStyle(fontSize: 14),
-                ),
-                Text(
-                  'Proa: $proa',
-                  style: const TextStyle(fontSize: 14),
-                ),
+                )
               ],
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 1),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
