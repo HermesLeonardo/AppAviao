@@ -60,6 +60,7 @@ class login extends StatelessWidget {
                   const Text(
                     "LOGIN.",
                     style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 30,
                       color: Colors.blue,
                     ),
@@ -111,10 +112,8 @@ class login extends StatelessWidget {
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Cadastro()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Cadastro()));
                     },
                   ),
                 ],
