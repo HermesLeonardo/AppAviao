@@ -1,5 +1,9 @@
-import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controle_voo.dart';
+//import 'dart:html';
+
+import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
 import 'package:flutter/material.dart';
+
+import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';
 
 class tela_cadastro_controle_voo extends StatefulWidget {
   const tela_cadastro_controle_voo({super.key});
@@ -12,8 +16,53 @@ class tela_cadastro_controle_voo extends StatefulWidget {
 class _tela_cadastro_controle_vooState
     extends State<tela_cadastro_controle_voo> {
   final _formKey = GlobalKey<FormState>();
+  final List<Map<String, String>> _formDatas = [];
+  final Map<String, String> _formData = {
+    'Data-Viagem': '',
+    'aeronave': '',
+    'viagem': '',
+    'controle': '',
+    'lat': '',
+    'long': '',
+    'QNH local': '',
+    'QNH dest': '',
+    'radio': '',
+    'tranponder de emergencia': '',
+    'tranponder 1': '',
+    'elevaçao destino': '',
+    'elevaçao local': '',
+    'tempo voo esti': '',
+    'altitude obrigatorio': '',
+    'alternativo 1': '',
+    'alternativo 2': '',
+  };
 
-  void _addControleVoo() {}
+  bool _showInformation = false;
+
+  void _salvarControledeVoo() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      setState(() {
+        _showInformation = true;
+      });
+      print(_formData);
+    }
+  }
+
+  List<ControleVooInfoWidget> controleVooInforWidgets = [];
+
+  //Verificar se for necessário criar um addControleVoo
+  /*
+  void _addControleVoo() {
+    setState(() {
+      controleVooInforWidgets.add(
+        const ControleVooInfoWidget(
+          dataviagem: _formData['Data-Viagem']!,
+        ),
+      );
+    });
+  }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +81,41 @@ class _tela_cadastro_controle_vooState
           key: _formKey,
           child: ListView(
             padding: const EdgeInsets.all(16),
-            children: const <Widget>[
+            children: <Widget>[
               Row(
                 children: <Widget>[
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Data da Viagem",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a data da viagem';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "AERONAVE",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a aeronave';
+                        }
+                        return null;
+                      },
                     ),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -58,11 +123,19 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Viagem",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a viagem';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -70,27 +143,51 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Controle",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o controle';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Lat",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o Lat';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Long",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o Long';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -98,27 +195,51 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "QNH Local",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o QNH Local';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "QNH Dest",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o QNH Dest';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "QNH Rádio",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o WNH Rádio';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -126,19 +247,35 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Transponder de Emergência",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o Transponder de Emergência';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Tranponder 1",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o Tranponder 1';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -146,19 +283,35 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Elevação destino",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a Elevação destino';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Elevação local",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a Elevação local';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -166,19 +319,35 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Tempo de Voo Esti",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira o Tempo de Voo Esti';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Altitude Obrigatoria",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a data da viagem';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -186,27 +355,45 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Alternativo 1",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a Alternativo 1';
+                        }
+                        return null;
+                      },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Alternativo 2",
+                      onSaved: (value) =>
+                          _formData['Data-Viagem'] = value ?? '',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, insira a Alternativo 2';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 255, 255, 255))),
-                  onPressed: null,
-                  child: Text("Adicionar Controle de voo"))
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                  child: const Text("Adicionar Controle de voo"))
             ],
           ),
         ));
