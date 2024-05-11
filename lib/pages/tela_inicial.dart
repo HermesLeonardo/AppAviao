@@ -23,10 +23,10 @@ class tela_inicial extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(200)),
+                  const BorderRadius.vertical(bottom: Radius.circular(180)),
               child: Container(
-                height: size.height * 0.6,
-                width: size.width * 0.5,
+                height: size.height * 0.4,
+                width: size.width * 1,
                 color: const Color.fromARGB(255, 0, 48, 73),
               ),
             ),
