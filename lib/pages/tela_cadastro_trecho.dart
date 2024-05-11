@@ -1,4 +1,3 @@
-
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
 
 //import 'dart:html';
@@ -28,8 +27,6 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
     'Alt.Corredor': '',
     'Frequencia': '',
     'Frequencia.alter': '',
-    'FIR': '',
-    'Cruzada. de FIR': '',
   };
 
   bool _showInformation = false;
@@ -54,7 +51,11 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
           para: _formData['Para']!,
           trecho: _formData['Trecho']!,
           corredor: _formData['Corredor']!,
+          altcorredor: _formData['altcorredor']!,
           proa: _formData['Proa']!,
+          Dist184MN: _formData['Dist184MN']!,
+          frequencia: _formData['frequencia']!,
+          frequenciaalter: _formData['frequenciaalter']!,
           onEdit: () {},
           onDelete: () {},
         ),
@@ -106,17 +107,18 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: <Widget>[
                 Expanded(
-                  child: TextFormField(
-                    decoration: const InputDecoration(labelText: 'Trecho'),
-                    onSaved: (Value) {
-                      _formData['Trecho'] = Value!;
-                    },
+                  child: custom_from_text_field(
+                    labelText: 'Trecho',
+                    onSaved: (value) => _formData['Trecho'] = value ?? '',
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira o Trecho da sua viagem';
+                        return 'Por favor, insira o Trecho de onde irá passar';
                       }
                       return null;
                     },
@@ -126,14 +128,12 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                   width: 10,
                 ), //espaço entre os campos
                 Expanded(
-                  child: TextFormField(
-                    decoration: const InputDecoration(labelText: 'Proa'),
-                    onSaved: (Value) {
-                      _formData['Proa'] = Value!;
-                    },
+                  child: custom_from_text_field(
+                    labelText: 'Proa',
+                    onSaved: (value) => _formData['Proa'] = value ?? '',
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira a Proa da sua viagem';
+                        return 'Por favor, insira a Proa do seu trecho';
                       }
                       return null;
                     },
@@ -141,8 +141,23 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ),
                 const SizedBox(
                   width: 10,
-                ), //espaço entre os campos
+                ),
+                Expanded(
+                  child: custom_from_text_field(
+                    labelText: 'Dist. 184MN',
+                    onSaved: (value) => _formData['Dist. 184MN'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Dist. 184MN do seu trecho';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
               ],
+            ),
+            const SizedBox(
+              height: 10,
             ),
             const SizedBox(
               width: 50,
@@ -150,14 +165,59 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: TextFormField(
-                    decoration: const InputDecoration(labelText: 'Corredor'),
-                    onSaved: (Value) {
-                      _formData['Corredor'] = Value!;
-                    },
+                  child: custom_from_text_field(
+                    labelText: 'Corredor',
+                    onSaved: (value) => _formData['Corredor'] = value ?? '',
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira o Corredor do trecho';
+                        return 'Por favor, insira o Corredor do seu trecho';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field(
+                    labelText: 'Alt. Corredor',
+                    onSaved: (value) =>
+                        _formData['Alt. Corredor'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Altura do Corredor do seu trecho';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field(
+                    labelText: 'Frequencia',
+                    onSaved: (value) => _formData['Frequencia'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Frequencia do seu trecho';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field(
+                    labelText: 'Frequencia. Alt',
+                    onSaved: (value) =>
+                        _formData['Frequancia. ALt'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Frequancia alternativa do seu trecho';
                       }
                       return null;
                     },

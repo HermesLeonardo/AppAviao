@@ -1,5 +1,6 @@
 import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/perfil.dart';
+import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
