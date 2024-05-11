@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
 
 class Cadastro extends StatelessWidget {
-  Cadastro({Key? key}) : super(key: key);
+  const Cadastro({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Movendo a declaração da variável para dentro do método build
+    final GlobalKey<FormState> formKey = GlobalKey<
+        FormState>(); // Movendo a declaração da variável para dentro do método build
 
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -20,39 +21,29 @@ class Cadastro extends StatelessWidget {
       body: Stack(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(200)),
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(400)),
             child: Container(
               height: size.height * 0.4,
               width: size.width * 1,
               color: const Color.fromARGB(255, 0, 53, 84),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: size.height * 0.6,
-              width: size.height,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(1)),
-              ),
-            ),
-          ),
           SingleChildScrollView(
             padding: const EdgeInsets.all(27),
             child: Form(
-              key: _formKey,
+              key: formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                   const SizedBox(
                     height: 450,
                   ), //espaço entre os campos
                   const Text(
                     "CADASTRO",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -134,8 +125,8 @@ class Cadastro extends StatelessWidget {
                     color: const Color.fromARGB(255, 69, 159, 227),
                     child: const Text("Cadastrar"),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
                       }
                     },
                   ),
@@ -152,12 +143,11 @@ class Cadastro extends StatelessWidget {
                             color: Color.fromARGB(255, 16, 33, 186),
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
-                      ),  
+                      ),
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => login()),
+                          MaterialPageRoute(builder: (context) => login()),
                         );
                       },
                     ),
