@@ -42,7 +42,7 @@ class login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 120),
                   const SizedBox(
                     height: 260,
                   ), //espaço entre os campos
@@ -108,13 +108,10 @@ class login extends StatelessWidget {
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => tela_criar_conta()));
-                      }
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const tela_criar_conta()));
                     },
                   ),
                 ],
