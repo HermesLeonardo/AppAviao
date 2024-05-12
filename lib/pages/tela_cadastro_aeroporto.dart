@@ -57,16 +57,141 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                     },
                   ),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'Codigo',
+                    onSaved: (value) => _formData['Codigo'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira do Codigo do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'Cabeceira',
+                    onSaved: (value) => _formData['Cabeceira'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Cabeceira do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
               ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'TWR',
+                    onSaved: (value) => _formData['TWR'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o TWR do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'Solo',
+                    onSaved: (value) => _formData['Solo'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Solo do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'Patio',
+                    onSaved: (value) => _formData['Patio'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira do Pátio do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'FIR',
+                    onSaved: (value) => _formData['FIR'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira do FIR do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: custom_from_text_field_aero(
+                    labelText: 'MetragemPista',
+                    onSaved: (value) =>
+                        _formData['MetragemPista'] = value ?? '',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a MEtragem da pista do aeroporto';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                }
+              },
+              child: const Text("Adicionar Aeroporto"),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Aqui você salvaria os dados no SQLite
-        },
-        child: const Icon(Icons.save),
       ),
     );
   }

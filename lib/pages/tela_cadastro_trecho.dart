@@ -245,9 +245,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Adicionar Trecho"),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            
           ],
         ),
       ),
