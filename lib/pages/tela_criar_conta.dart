@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
 
+class tela_criar_conta extends StatelessWidget {
+  const tela_criar_conta({super.key});
+
 class Cadastro extends StatelessWidget {
   const Cadastro({super.key});
 
@@ -22,7 +25,11 @@ class Cadastro extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius:
+
+                const BorderRadius.vertical(bottom: Radius.circular(200)),
+
                 const BorderRadius.vertical(bottom: Radius.circular(400)),
+
             child: Container(
               height: size.height * 0.4,
               width: size.width * 1,

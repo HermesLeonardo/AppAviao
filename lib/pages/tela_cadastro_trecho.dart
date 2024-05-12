@@ -1,5 +1,5 @@
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
-//import 'dart:html';
+
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
@@ -49,11 +49,11 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
           para: _formData['Para']!,
           trecho: _formData['Trecho']!,
           corredor: _formData['Corredor']!,
-          altcorredor: _formData['altcorredor']!,
+          //altcorredor: _formData['altcorredor']!,
           proa: _formData['Proa']!,
-          Dist184MN: _formData['Dist184MN']!,
-          frequencia: _formData['frequencia']!,
-          frequenciaalter: _formData['frequenciaalter']!,
+          //Dist184MN: _formData['Dist184MN']!,
+          //frequencia: _formData['frequencia']!,
+          //frequenciaalter: _formData['frequenciaalter']!,
           onEdit: () {},
           onDelete: () {},
         ),
