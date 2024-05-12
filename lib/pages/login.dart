@@ -58,6 +58,7 @@ class login extends StatelessWidget {
                   const Text(
                     "Bem vindo seu rola bosta",
                     style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 30,
                       color: Colors.blue,
                     ),
@@ -108,10 +109,12 @@ class login extends StatelessWidget {
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const tela_criar_conta()));
+                              builder: (context) => const tela_criar_conta()));            
+
                     },
                   ),
                 ],

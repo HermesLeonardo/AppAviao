@@ -6,6 +6,9 @@ import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart'
 class tela_criar_conta extends StatelessWidget {
   const tela_criar_conta({super.key});
 
+class Cadastro extends StatelessWidget {
+  const Cadastro({super.key});
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<
@@ -22,22 +25,15 @@ class tela_criar_conta extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius:
+
                 const BorderRadius.vertical(bottom: Radius.circular(200)),
+
+                const BorderRadius.vertical(bottom: Radius.circular(400)),
+
             child: Container(
               height: size.height * 0.4,
               width: size.width * 1,
               color: const Color.fromARGB(255, 0, 53, 84),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: size.height * 0.6,
-              width: size.height,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(1)),
-              ),
             ),
           ),
           SingleChildScrollView(
@@ -47,14 +43,14 @@ class tela_criar_conta extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                   const SizedBox(
                     height: 450,
                   ), //espaço entre os campos
                   const Text(
                     "CADASTRO",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
                   const SizedBox(height: 30),

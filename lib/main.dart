@@ -1,4 +1,5 @@
 import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
@@ -21,6 +22,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: login());
+        home: Perfil());
   }
 }
