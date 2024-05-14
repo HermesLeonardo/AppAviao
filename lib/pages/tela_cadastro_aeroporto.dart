@@ -1,4 +1,6 @@
 import 'package:appaviao/Custons/Custom_tela_aeroporto/custom_from_text_field_aero.dart';
+import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
+import 'package:appaviao/classes_dao/aeroporto_dao.dart';
 import 'package:flutter/material.dart';
 
 class tela_cadastro_aeroporto extends StatefulWidget {
@@ -30,6 +32,17 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
     'metragemPista': '',
     'patio': '',
   };
+
+  void _inserirAeroporto(aeroporto_dto aeroporto) {
+    aeroporto_dao aerodao = aeroporto_dao();
+    aerodao.insertAeroporto(aeroporto);
+  }
+
+  Future<List<aeroporto_dto>> listarAero() async {
+    aeroporto_dao aerolistdao = aeroporto_dao();
+    List<aeroporto_dto> aeroporto = await aerolistdao.selecionarAeroporto();
+    return aeroporto;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -184,11 +197,19 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
             ),
             ElevatedButton(
               onPressed: () {
+                _inserirAeroporto(aeroporto_dto());
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                 }
               },
               child: const Text("Adicionar Aeroporto"),
+            ),
+            const SizedBox(height: 10), // Espaço entre os botões
+            ElevatedButton(
+              onPressed: () {
+                print(listarAero()); // Imprimir no terminal
+              },
+              child: const Text("Outro Botão"),
             ),
           ],
         ),
