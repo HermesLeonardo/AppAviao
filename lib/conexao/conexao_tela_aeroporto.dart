@@ -1,5 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+
 
 class conexao_tela_aeroporto {
   static const _dbname = "appaviao.db";
@@ -41,11 +43,12 @@ class conexao_tela_aeroporto {
   }
 
   Future<Database> initDB() async {
+    databaseFactory = databaseFactoryFfi; //FACTORY TA AQUI
     // instancia o db na primeira vez que for acessado
     return openDatabase(
       join(await getDatabasesPath(), _dbname),
-      onCreate: (db, version) {
-        return db.execute(_sqlScript);
+      onCreate: (db, version) async {
+        await db.execute(_sqlScript);
       },
       version: 1,
     );

@@ -44,8 +44,13 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
     return aeroporto;
   }
 
+  late aeroporto_dto aeroporto_ins;
+
+
+
   @override
   Widget build(BuildContext context) {
+    aeroporto_ins = aeroporto_dto();
     return Scaffold(
       backgroundColor: const Color.fromARGB(211, 216, 216, 216),
       appBar: AppBar(
@@ -197,9 +202,9 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
             ),
             ElevatedButton(
               onPressed: () {
-                _inserirAeroporto(aeroporto_dto());
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
+                  _inserirAeroporto(aeroporto_ins);
                 }
               },
               child: const Text("Adicionar Aeroporto"),
@@ -207,7 +212,7 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
             const SizedBox(height: 10), // Espaço entre os botões
             ElevatedButton(
               onPressed: () {
-                print(listarAero()); // Imprimir no terminal
+                listarAero(); // Imprimir no terminal
               },
               child: const Text("Outro Botão"),
             ),
