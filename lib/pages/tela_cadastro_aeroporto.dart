@@ -1,6 +1,7 @@
 import 'package:appaviao/Custons/Custom_tela_aeroporto/custom_from_text_field_aero.dart';
 import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
 import 'package:appaviao/classes_dao/aeroporto_dao.dart';
+import 'package:appaviao/listagem_aeroporto/TesteListagem.dart';
 import 'package:flutter/material.dart';
 
 class tela_cadastro_aeroporto extends StatefulWidget {
@@ -22,35 +23,22 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
   final metragemPistaController = TextEditingController();
   final patioController = TextEditingController();
 
-  final Map<String, String> _formData = {
-    'Nome': '',
-    'codigo': '',
-    'twr': '',
-    'solo': '',
-    'cabeceira': '',
-    'fir': '',
-    'metragemPista': '',
-    'patio': '',
-  };
-
-  void _inserirAeroporto(aeroporto_dto aeroporto) {
-    aeroporto_dao aerodao = aeroporto_dao();
-    aerodao.insertAeroporto(aeroporto);
+  void _inserirAeroporto() {
+    final aeroporto = aeroporto_dto(
+      nome_aero: nomeController.text,
+      codigo_aero: codigoController.text,
+      twr_aero: twrController.text,
+      solo_aero: soloController.text,
+      cabeceira_aero: cabeceiraController.text,
+      fir_aero: firController.text,
+      metragem_pista: metragemPistaController.text,
+      patio_aero: patioController.text,
+    );
+    aeroporto_dao().insertAeroporto(aeroporto);
   }
-
-  Future<List<aeroporto_dto>> listarAero() async {
-    aeroporto_dao aerolistdao = aeroporto_dao();
-    List<aeroporto_dto> aeroporto = await aerolistdao.selecionarAeroporto();
-    return aeroporto;
-  }
-
-  late aeroporto_dto aeroporto_ins;
-
-
 
   @override
   Widget build(BuildContext context) {
-    aeroporto_ins = aeroporto_dto();
     return Scaffold(
       backgroundColor: const Color.fromARGB(211, 216, 216, 216),
       appBar: AppBar(
@@ -66,37 +54,33 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'Nome',
-                    onSaved: (value) => _formData['Nome'] = value ?? '',
+                    controller: nomeController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira do Nome do aeroporto';
+                        return 'Por favor, insira o Nome do aeroporto';
                       }
                       return null;
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'Codigo',
-                    onSaved: (value) => _formData['Codigo'] = value ?? '',
+                    controller: codigoController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira do Codigo do aeroporto';
+                        return 'Por favor, insira o Codigo do aeroporto';
                       }
                       return null;
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'Cabeceira',
-                    onSaved: (value) => _formData['Cabeceira'] = value ?? '',
+                    controller: cabeceiraController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a Cabeceira do aeroporto';
@@ -105,20 +89,15 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             Row(
               children: <Widget>[
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'TWR',
-                    onSaved: (value) => _formData['TWR'] = value ?? '',
+                    controller: twrController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o TWR do aeroporto';
@@ -127,13 +106,11 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'Solo',
-                    onSaved: (value) => _formData['Solo'] = value ?? '',
+                    controller: soloController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o Solo do aeroporto';
@@ -142,54 +119,44 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'Patio',
-                    onSaved: (value) => _formData['Patio'] = value ?? '',
+                    controller: patioController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira do Pátio do aeroporto';
+                        return 'Por favor, insira o Pátio do aeroporto';
                       }
                       return null;
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             Row(
               children: <Widget>[
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'FIR',
-                    onSaved: (value) => _formData['FIR'] = value ?? '',
+                    controller: firController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira do FIR do aeroporto';
+                        return 'Por favor, insira o FIR do aeroporto';
                       }
                       return null;
                     },
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: custom_from_text_field_aero(
                     labelText: 'MetragemPista',
-                    onSaved: (value) =>
-                        _formData['MetragemPista'] = value ?? '',
+                    controller: metragemPistaController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira a MEtragem da pista do aeroporto';
+                        return 'Por favor, insira a Metragem da pista do aeroporto';
                       }
                       return null;
                     },
@@ -197,14 +164,11 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  _inserirAeroporto(aeroporto_ins);
+                  _inserirAeroporto();
                 }
               },
               child: const Text("Adicionar Aeroporto"),
@@ -212,9 +176,12 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
             const SizedBox(height: 10), // Espaço entre os botões
             ElevatedButton(
               onPressed: () {
-                listarAero(); // Imprimir no terminal
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TesteListagem()));
               },
-              child: const Text("Outro Botão"),
+              child: const Text("Visualizar Aeroportos Cadastrados"),
             ),
           ],
         ),

@@ -1,18 +1,17 @@
-import 'package:appaviao/conexao/conexao_tela_aeroporto.dart';
 import 'package:appaviao/entitites/aeroporto_entity.dart';
 
 part 'aeroporto_validate.dart';
 
 class aeroporto_dto with aeroporto_validade {
   int? idaeroporto;
-  String codigo_aero = conexao_tela_aeroporto.columnCodigo;
-  String nome_aero = conexao_tela_aeroporto.columnNome;
-  String twr_aero = conexao_tela_aeroporto.columnTwr;
-  String solo_aero = conexao_tela_aeroporto.columnSolo;
-  String cabeceira_aero = conexao_tela_aeroporto.columnCabeceira;
-  String fir_aero = conexao_tela_aeroporto.columnFir;
-  String metragem_pista = conexao_tela_aeroporto.columnMetragemPista;
-  String patio_aero = conexao_tela_aeroporto.columnPatio;
+  String codigo_aero;
+  String nome_aero;
+  String twr_aero;
+  String solo_aero;
+  String cabeceira_aero;
+  String fir_aero;
+  String metragem_pista;
+  String patio_aero;
 
   aeroporto_dto({
     this.idaeroporto,
