@@ -56,7 +56,7 @@ class login extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   const Text(
-                    "Bem vindo seu rola bosta",
+                    "Bem vindo Piloto",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -109,12 +109,10 @@ class login extends StatelessWidget {
                     color: const Color.fromARGB(255, 39, 86, 157),
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
-
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const tela_criar_conta()));            
-
+                              builder: (context) => const tela_criar_conta()));
                     },
                   ),
                 ],
