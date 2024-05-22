@@ -1,4 +1,5 @@
 import 'package:appaviao/Custons/Custom_tela_login/custom_from_login.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
@@ -41,7 +42,7 @@ class login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 120),
                   const SizedBox(
                     height: 260,
                   ), //espaço entre os campos
@@ -109,12 +110,11 @@ class login extends StatelessWidget {
                     child: const Text("Cadastrar Conta"),
                     onPressed: () {
 
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const tela_criar_conta()));            
 
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => login()));
-                      }
                     },
                   ),
                 ],
