@@ -257,50 +257,6 @@ class PerfilState extends State<Perfil> {
                   ],
                 ),
                 const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Modelo Aeronave",
-                        controller: modeloAeronaveController,
-                        readOnly: !editandoModeloAeronave,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          editandoModeloAeronave = !editandoModeloAeronave;
-                        });
-                      },
-                      icon: Icon(
-                          editandoModeloAeronave ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Código Aeronave",
-                        controller: codigoAeronaveController,
-                        readOnly: !editandoCodigoAeronave,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          editandoCodigoAeronave = !editandoCodigoAeronave;
-                        });
-                      },
-                      icon: Icon(
-                          editandoCodigoAeronave ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 25),
                 ElevatedButton(
                   onPressed: adicionarNovaAeronave,
                   child: const Text("Adicionar Nova Aeronave"),
