@@ -5,6 +5,7 @@ import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/pages/primeira_tela.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const tela_cadastro_aeroporto());
+        home: PrimeiraTela());
   }
 }
