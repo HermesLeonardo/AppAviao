@@ -1,6 +1,9 @@
 //import 'dart:html';
 
+import 'dart:js';
+
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
+import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';
@@ -391,7 +394,29 @@ class _tela_cadastro_controle_vooState
                       backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 255, 255, 255))),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
+                    if (_formKey.currentState!.validate()) {
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Controle de Voo'),
+                            content: const Text(
+                                'Controle de Voo Salvo com sucesso!!'),
+                            actions: <Widget>[
+                              TextButton(
+                                  style: TextButton.styleFrom(
+                                    textStyle:
+                                        Theme.of(context).textTheme.labelLarge,
+                                  ),
+                                  child: const Text('Confirmar'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop;
+                                  }),
+                            ],
+                          );
+                        },
+                      );
+                    }
                   },
                   child: const Text("Adicionar Controle de voo"))
             ],
