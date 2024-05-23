@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-
 class conexao_tela_aeroporto {
   static const _dbname = "appaviao.db";
   static const _sqlScript = '''
