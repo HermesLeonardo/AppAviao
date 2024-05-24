@@ -1,7 +1,5 @@
 //import 'dart:html';
 
-import 'dart:js';
-
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
