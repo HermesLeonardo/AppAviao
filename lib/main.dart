@@ -5,6 +5,7 @@ import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/pages/primeira_tela.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
