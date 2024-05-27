@@ -147,7 +147,7 @@ class tela_criar_conta extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => login()),
+                          MaterialPageRoute(builder: (context) => LoginTela()),
                         );
                       },
                     ),

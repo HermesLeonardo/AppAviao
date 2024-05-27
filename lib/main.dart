@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
@@ -26,7 +27,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: PrimeiraTela());
-        home: const tela_criar_conta());
+        home: LoginTela());
   }
 }
