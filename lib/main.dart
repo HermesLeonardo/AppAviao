@@ -28,5 +28,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: LoginTela());
+        home: const tela_cadastro_aeroporto());
   }
 }

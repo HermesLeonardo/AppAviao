@@ -17,6 +17,13 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
   late TextEditingController _nomeController;
   late TextEditingController _codigoController;
   late TextEditingController _twrController;
+  late TextEditingController _soloController;
+  late TextEditingController _cabeceiraController;
+  late TextEditingController _firController;
+  late TextEditingController _metragemPistaController;
+  late TextEditingController _patioController;
+
+  bool _editing = false;
 
   @override
   void initState() {
@@ -24,6 +31,20 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
     _nomeController = TextEditingController(text: widget.aeroporto.nome_aero);
     _codigoController =
         TextEditingController(text: widget.aeroporto.codigo_aero);
+    _twrController = TextEditingController(text: widget.aeroporto.twr_aero);
+    _soloController = TextEditingController(text: widget.aeroporto.solo_aero);
+    _cabeceiraController =
+        TextEditingController(text: widget.aeroporto.cabeceira_aero);
+    _firController = TextEditingController(text: widget.aeroporto.fir_aero);
+    _metragemPistaController =
+        TextEditingController(text: widget.aeroporto.metragem_pista);
+    _patioController = TextEditingController(text: widget.aeroporto.patio_aero);
+  }
+
+  void _toggleEditing() {
+    setState(() {
+      _editing = !_editing;
+    });
   }
 
   void _saveAeroporto() async {
@@ -33,8 +54,11 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
         nome_aero: _nomeController.text,
         codigo_aero: _codigoController.text,
         twr_aero: _twrController.text,
-
-        // other fields...
+        solo_aero: _soloController.text,
+        cabeceira_aero: _cabeceiraController.text,
+        fir_aero: _firController.text,
+        metragem_pista: _metragemPistaController.text,
+        patio_aero: _patioController.text,
       );
 
       await aeroporto_dao().updateAeroporto(updatedAeroporto);
@@ -46,6 +70,12 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
   void dispose() {
     _nomeController.dispose();
     _codigoController.dispose();
+    _twrController.dispose();
+    _soloController.dispose();
+    _cabeceiraController.dispose();
+    _firController.dispose();
+    _metragemPistaController.dispose();
+    _patioController.dispose();
     super.dispose();
   }
 
@@ -53,8 +83,8 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Editar Aeroporto"),
-        backgroundColor: const Color.fromARGB(255, 30, 106, 219),
+        title: const Text("Visualizar Aeroporto Cadastrado"),
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -62,61 +92,94 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
+              _buildTextFormField(
                 controller: _nomeController,
-                decoration: const InputDecoration(labelText: "Nome"),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o nome';
-                  }
-                  return null;
-                },
+                labelText: "Nome",
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _codigoController,
-                decoration: const InputDecoration(labelText: "Código"),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o código';
-                  }
-                  return null;
-                },
+                labelText: "Código",
               ),
-              TextFormField(
-                controller: _codigoController,
-                decoration: const InputDecoration(labelText: "Código"),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o código';
-                  }
-                  return null;
-                },
+              _buildTextFormField(
+                controller: _twrController,
+                labelText: "TWR",
               ),
-              const SizedBox(
-                height: 20,
+              _buildTextFormField(
+                controller: _soloController,
+                labelText: "SOLO",
               ),
-              Row(children: <Widget>[
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: _saveAeroporto,
-                  child: const Text("Salvar"),
-                ),
-                const SizedBox(width: 50),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const TesteListagem()));
-                  },
-                  child: const Text("Voltar"),
-                ),
-              ])
+              _buildTextFormField(
+                controller: _cabeceiraController,
+                labelText: "Cabeceira",
+              ),
+              _buildTextFormField(
+                controller: _firController,
+                labelText: "FIR",
+              ),
+              _buildTextFormField(
+                controller: _metragemPistaController,
+                labelText: "Metragem",
+              ),
+              _buildTextFormField(
+                controller: _patioController,
+                labelText: "Patio",
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _saveAeroporto,
+                    child: const Text("Salvar Edição"),
+                  ),
+                  const SizedBox(width: 20),
+                  ElevatedButton(
+                    onPressed: _toggleEditing,
+                    child: Text(_editing
+                        ? 'Bloquear Edição'
+                        : 'Desbloquear para Edição'),
+                  ),
+                  const SizedBox(width: 15),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TesteListagem()));
+                    },
+                    child: const Text("Voltar"),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextFormField(
+      {required TextEditingController controller, required String labelText}) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+        ),
+        readOnly: !_editing,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Por favor, insira o $labelText';
+          }
+          return null;
+        },
       ),
     );
   }
