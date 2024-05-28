@@ -1,0 +1,29 @@
+warning: in the working copy of 'macos/Flutter/GeneratedPluginRegistrant.swift', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/lib/main.dart b/lib/main.dart[m
+[1mindex b131793..ed3c9de 100644[m
+[1m--- a/lib/main.dart[m
+[1m+++ b/lib/main.dart[m
+[36m@@ -6,8 +6,7 @@[m [mimport 'package:appaviao/pages/tela_criar_conta.dart';[m
+ import 'package:appaviao/pages/tela_inicial.dart';[m
+ import 'package:flutter/material.dart';[m
+ import 'package:sqflite/sqflite.dart';[m
+[31m-import 'package:sqflite_common_ffi/sqflite_ffi.dart'; [m
+[31m-[m
+[32m+[m[32mimport 'package:sqflite_common_ffi/sqflite_ffi.dart';[m
+ [m
+ void main() {[m
+   sqfliteFfiInit();[m
+[1mdiff --git a/lib/pages/tela_cadastro_controle_voo.dart b/lib/pages/tela_cadastro_controle_voo.dart[m
+[1mindex 4ee58ee..e0f854c 100644[m
+[1m--- a/lib/pages/tela_cadastro_controle_voo.dart[m
+[1m+++ b/lib/pages/tela_cadastro_controle_voo.dart[m
+[36m@@ -1,9 +1,4 @@[m
+[31m-//import 'dart:html';[m
+[31m-[m
+[31m-import 'dart:js';[m
+[31m-[m
+ import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';[m
+[31m-import 'package:appaviao/pages/tela_inicial.dart';[m
+ import 'package:flutter/material.dart';[m
+ [m
+ import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';[m
