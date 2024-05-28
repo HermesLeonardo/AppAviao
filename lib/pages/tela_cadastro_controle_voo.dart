@@ -1,12 +1,10 @@
-//import 'dart:html';
-
-import 'dart:js';
+import 'dart:js_interop';
 
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
-import 'package:appaviao/pages/tela_inicial.dart';
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:flutter/material.dart';
-
 import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';
+import '../DTOS/controleVooDTO/controleVoo_dto.dart';
 
 class tela_cadastro_controle_voo extends StatefulWidget {
   const tela_cadastro_controle_voo({super.key});
@@ -39,6 +37,7 @@ class _tela_cadastro_controle_vooState
     'alternativo 1': '',
     'alternativo 2': '',
   };
+  final dataViagemController = TextEditingController();
 
   bool _showInformation = false;
 
@@ -67,10 +66,16 @@ class _tela_cadastro_controle_vooState
   }
   */
 
+  void _inserirControlevoo() {
+    final controlevoo = controleVoo_dto(
+        //dataViagem: dataViagemController.text,
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 0, 48, 73),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
           title: const Text(
             "Controle de Voo",
@@ -78,7 +83,7 @@ class _tela_cadastro_controle_vooState
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: const Color.fromARGB(255, 39, 179, 255),
         ),
         body: Form(
           key: _formKey,
@@ -90,6 +95,7 @@ class _tela_cadastro_controle_vooState
                   Expanded(
                     child: custom_from_text_field_controle_voo(
                       labelText: "Data da Viagem",
+                      controller: dataViagemController,
                       onSaved: (value) =>
                           _formData['Data-Viagem'] = value ?? '',
                       validator: (value) {
@@ -390,35 +396,51 @@ class _tela_cadastro_controle_vooState
                 height: 20,
               ),
               ElevatedButton(
+                style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                        Color.fromARGB(255, 255, 255, 255))),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Controle de Voo'),
+                          content:
+                              const Text('Controle de Voo Salvo com sucesso!!'),
+                          actions: <Widget>[
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle:
+                                      Theme.of(context).textTheme.labelLarge,
+                                ),
+                                child: const Text('Confirmar'),
+                                onPressed: () {
+                                  Navigator.of(context).pop;
+                                }),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: const Text("Adicionar Controle de voo"),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ElevatedButton(
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 255, 255, 255))),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Controle de Voo'),
-                            content: const Text(
-                                'Controle de Voo Salvo com sucesso!!'),
-                            actions: <Widget>[
-                              TextButton(
-                                  style: TextButton.styleFrom(
-                                    textStyle:
-                                        Theme.of(context).textTheme.labelLarge,
-                                  ),
-                                  child: const Text('Confirmar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop;
-                                  }),
-                            ],
-                          );
-                        },
-                      );
-                    }
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const tela_lista_controlevoo()),
+                    );
                   },
-                  child: const Text("Adicionar Controle de voo"))
+                  child: const Text("Lista de Controle de Voo"))
             ],
           ),
         ));
