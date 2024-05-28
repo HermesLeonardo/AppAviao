@@ -29,7 +29,8 @@ class ItensLista extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: const Icon(Icons.edit, color: Colors.orange),
+              icon: const Icon(Icons.remove_red_eye_rounded,
+                  color: Color.fromARGB(255, 38, 84, 210)),
               onPressed: onEdit,
             ),
             IconButton(

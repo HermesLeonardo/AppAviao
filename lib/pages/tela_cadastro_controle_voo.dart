@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:flutter/material.dart';
