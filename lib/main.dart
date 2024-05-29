@@ -26,6 +26,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const tela_cadastro_aeroporto());
+        home: const tela_inicial());
   }
 }
