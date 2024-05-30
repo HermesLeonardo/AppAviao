@@ -1,9 +1,9 @@
 part of 'controleVoo_dto.dart';
 
 mixin class controleVoo_validate {
-  DateTime? dataViagemValidate(DateTime dataViagem) {
-    if (dataViagem.isUtc) {
-      return DateTime.now();
+  String? dataViagemValidate(String dataViagem) {
+    if (dataViagem.isEmpty) {
+      return 'Data Vaigem está vazio';
     }
     return null;
   }
@@ -29,8 +29,8 @@ mixin class controleVoo_validate {
     return null;
   }
 
-  String? longValidat(String long) {
-    if (long.isEmpty) {
+  String? longValidat(String Long) {
+    if (Long.isEmpty) {
       return 'Long está vazio';
     }
     return null;

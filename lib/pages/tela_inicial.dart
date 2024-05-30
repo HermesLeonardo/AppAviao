@@ -1,3 +1,9 @@
+import 'dart:ui';
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
+import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
+import 'package:appaviao/pages/tela_cadastro_trecho.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_aeroporto.dart';
 import 'tela_cadastro_controle_voo.dart';
@@ -162,49 +168,29 @@ class tela_inicial extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: ((context) =>
-                                const tela_cadastro_controle_voo()),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Cadastrar controle de voo',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                      ),
+                              builder: ((context) =>
+                                  const tela_lista_controlevoo())));
+                    },
+                    child: const Text(
+                      'Cadastrar controle de voo',
+                      style: TextStyle(
+                          fontSize: 32,
+                          color: Color.fromARGB(255, 247, 247, 247)),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  SizedBox(
-                    height: 60,
-                    width: 200,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 69, 159, 227),
-                        ),
-                      ),
-                      onPressed: () {
-                        // Add functionality for 'Iniciar Viagem' button
-                      },
-                      child: const Text(
-                        'Iniciar Viagem',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white, // Texto em branco
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                const SizedBox(height: 1.0),
+                ElevatedButton(
+                    onPressed: () {}, child: const Text('Iniciar Viagem')),
+              ],
+            )),
+          ],
+        ),
       ),
       bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
-    );
+    )
   }
 }

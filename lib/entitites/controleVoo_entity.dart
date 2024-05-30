@@ -1,5 +1,6 @@
 class controleVooEntity {
-  final DateTime dataViagem;
+  final int idcontroleVoo;
+  final String dataViagem;
   final String controle;
   final String lat;
   final String lag;
@@ -17,6 +18,7 @@ class controleVooEntity {
   final String alternativo_2;
 
   controleVooEntity({
+    required this.idcontroleVoo,
     required this.dataViagem,
     required this.controle,
     required this.lat,
