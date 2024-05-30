@@ -1,11 +1,11 @@
 import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
-import 'package:appaviao/conexao/conexao_tela_aeroporto.dart';
+import 'package:appaviao/conexao/conexao.dart';
 import 'package:sqflite/sqflite.dart';
 
 class aeroporto_dao {
   // final Database _db;
   Future<Database> get _db async =>
-      await conexao_tela_aeroporto.instance.database;
+      await conexao.instance.database;
 
   Future<void> insertAeroporto(aeroporto_dto aeroportoDto) async {
     final db = await _db;
