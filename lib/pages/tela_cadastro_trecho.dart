@@ -1,6 +1,5 @@
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
 
-
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +13,8 @@ class tela_cadastro_trecho extends StatefulWidget {
   State<tela_cadastro_trecho> createState() => _tela_cadastro_trechoState();
 }
 
-
-
 class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
- /*  final _formKey = GlobalKey<FormState>();
+  /*  final _formKey = GlobalKey<FormState>();
   final List<Map<String, String>> _formDatas = [];
   final Map<String, String> _formData = {
     'De': '',
@@ -54,7 +51,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
   final frequenciaController = TextEditingController();
   final frequenciaAlterController = TextEditingController();
 
-    void _inserirTrecho() {
+  void _inserirTrecho() {
     final trecho = trecho_dto(
       de_trecho: deController.text,
       para_trecho: paraController.text,
@@ -69,8 +66,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
     trecho_dao().insertTrecho(trecho);
   }
 
-
- // List<TrechoInfoWidget> trechoInfoWidgets = [];
+  // List<TrechoInfoWidget> trechoInfoWidgets = [];
 
 /*   void _addTrecho() {
     setState(() {
@@ -274,7 +270,6 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Adicionar Trecho"),
             ), */
-            
           ],
         ),
       ),
