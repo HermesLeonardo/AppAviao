@@ -42,7 +42,7 @@ class login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 120),
                   const SizedBox(
                     height: 260,
                   ), //espaço entre os campos
@@ -56,8 +56,9 @@ class login extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   const Text(
-                    "Bem vindo seu rola bosta",
+                    "Bem vindo Piloto",
                     style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 30,
                       color: Colors.blue,
                     ),
@@ -115,6 +116,10 @@ class login extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const Cadastro()));
                       }
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const tela_criar_conta()));
                     },
                   ),
                 ],

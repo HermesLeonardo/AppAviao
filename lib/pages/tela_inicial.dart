@@ -1,5 +1,6 @@
 import 'dart:ui';
-
+import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
+import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -100,10 +101,39 @@ class tela_inicial extends StatelessWidget {
                           const Color.fromARGB(255, 69, 159, 227)),
                     ),
                     onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) =>
+                                  const tela_cadastro_aeroporto())));
                       //print('Cadastrar Aeroporto');
                     },
                     child: const Text(
                       'Cadastrar Aeroporto',
+                      style: TextStyle(
+                          fontSize: 32,
+                          color: Color.fromARGB(255, 247, 247, 247)),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  height: 100,
+                  width: 600,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 69, 159, 227)),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) =>
+                                  const tela_cadastro_controle_voo())));
+                    },
+                    child: const Text(
+                      'Cadastrar controle de voo',
                       style: TextStyle(
                           fontSize: 32,
                           color: Color.fromARGB(255, 247, 247, 247)),

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 class custom_from_text_field_aero extends StatelessWidget {
   final String labelText;
-  final FormFieldSetter<String>? onSaved;
+  final TextEditingController controller;
   final FormFieldValidator<String>? validator;
-  final TextEditingController? controller;
 
   const custom_from_text_field_aero({
     super.key,
     required this.labelText,
-    this.onSaved,
+    required this.controller,
     this.validator,
-    this.controller,
   });
 
   @override
@@ -20,19 +18,24 @@ class custom_from_text_field_aero extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        border: const OutlineInputBorder(),
-        filled: true,
-        fillColor: Colors.lightBlue[50],
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue, width: 1.0),
-          borderRadius: BorderRadius.circular(20.0),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue, // Define a cor do contorno
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue, width: 2.0),
-          borderRadius: BorderRadius.circular(20.0),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors
+                .blue, // Define a cor do contorno quando o campo não está em foco
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors
+                .blue, // Define a cor do contorno quando o campo está em foco
+          ),
         ),
       ),
-      onSaved: onSaved,
       validator: validator,
     );
   }
