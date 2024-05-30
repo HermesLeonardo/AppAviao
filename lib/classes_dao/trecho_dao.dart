@@ -1,11 +1,10 @@
 import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
-import 'package:appaviao/conexao/conexao_tela_aeroporto.dart';
+import 'package:appaviao/conexao/conexao.dart';
 import 'package:sqflite/sqflite.dart';
 
 class trecho_dao {
   // final Database _db;
-  Future<Database> get _db async =>
-      await conexao_tela_aeroporto.instance.database;
+  Future<Database> get _db async => await conexao.instance.database;
 
   Future<void> insertTrecho(trecho_dto trechoDto) async {
     final db = await _db;
