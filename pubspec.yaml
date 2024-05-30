@@ -23,7 +23,6 @@ dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/dogdino.png
     - assets/images/aviao.png
     - assets/images/aviaocriartela.png
     - assets/images/aviaosfundo.png

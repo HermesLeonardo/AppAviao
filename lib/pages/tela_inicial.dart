@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
-import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
-import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_aeroporto.dart';
@@ -11,7 +9,7 @@ import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
 
 class tela_inicial extends StatelessWidget {
-  const tela_inicial({super.key});
+  const tela_inicial({super.key}); // Corrigindo a declaração do construtor
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +72,7 @@ class tela_inicial extends StatelessWidget {
                   const EdgeInsets.only(top: 30.0), // Ajuste de espaçamento
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 100,
-                  ),
+                  const SizedBox(height: 100),
                   SizedBox(
                     height: 60,
                     width: 900,
@@ -99,7 +95,7 @@ class tela_inicial extends StatelessWidget {
                         'Cadastrar Trecho',
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.black, // Texto em preto
+                          color: Colors.black,
                         ),
                       ),
                     ),
@@ -169,28 +165,46 @@ class tela_inicial extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: ((context) =>
-                                  const tela_lista_controlevoo())));
-                    },
-                    child: const Text(
-                      'Cadastrar controle de voo',
-                      style: TextStyle(
-                          fontSize: 32,
-                          color: Color.fromARGB(255, 247, 247, 247)),
+                                  const tela_lista_controlevoo())),
+                        );
+                      },
+                      child: const Text(
+                        'Cadastrar controle de voo',
+                        style: TextStyle(
+                            fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 1,
-                ),
-                const SizedBox(height: 1.0),
-                ElevatedButton(
-                    onPressed: () {}, child: const Text('Iniciar Viagem')),
-              ],
-            )),
-          ],
-        ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 60,
+                    width: 300,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                      child: const Text(
+                        'Iniciar Viagem',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color:
+                              Color.fromARGB(255, 53, 80, 255), // Cor do texto
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
-    )
+    );
   }
 }
