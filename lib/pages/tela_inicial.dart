@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
@@ -130,7 +131,7 @@ class tela_inicial extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: ((context) =>
-                                  const tela_cadastro_controle_voo())));
+                                  const tela_lista_controlevoo())));
                     },
                     child: const Text(
                       'Cadastrar controle de voo',
