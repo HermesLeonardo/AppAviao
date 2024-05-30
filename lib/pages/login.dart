@@ -114,7 +114,7 @@ class login extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Cadastro()));
+                                builder: (context) => const tela_criar_conta()));
                       }
                       Navigator.push(
                           context,

@@ -51,7 +51,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
   final distController = TextEditingController();
   final corredorController = TextEditingController();
   final altCorredorController = TextEditingController();
-  final frequenciaController = TextEditingController();,
+  final frequenciaController = TextEditingController();
   final frequenciaAlterController = TextEditingController();
 
     void _inserirTrecho() {
