@@ -167,11 +167,9 @@ class _LoginTelaState extends State<LoginTela> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => tela_criar_conta(),
-                        ),
-                      );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const tela_criar_conta()));
                     },
                     child: Text.rich(
                       TextSpan(
