@@ -2,6 +2,7 @@ import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
 import 'package:appaviao/classes_dao/aeroporto_dao.dart';
 import 'package:appaviao/listagem_aeroporto/itensLista.dart';
 import 'package:appaviao/listagem_aeroporto/tela_editar_aeros.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:flutter/material.dart';
 
@@ -87,6 +88,7 @@ class _TesteListagemState extends State<TesteListagem> {
         },
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 1),
     );
   }
 }
