@@ -1,6 +1,7 @@
 class controleVooEntity {
   final int idcontroleVoo;
   final String dataViagem;
+  final String nomeViagem;
   final String controle;
   final String lat;
   final String lag;
@@ -8,7 +9,7 @@ class controleVooEntity {
   final String qmh_local;
   final String qmh_destino;
   final String radio;
-  final String transpoinder_1;
+  final String transponder_1;
   final String transponder_emergencia;
   final String elevacao_local;
   final String elevacao_destino;
@@ -20,6 +21,7 @@ class controleVooEntity {
   controleVooEntity({
     required this.idcontroleVoo,
     required this.dataViagem,
+    required this.nomeViagem,
     required this.controle,
     required this.lat,
     required this.lag,
@@ -27,7 +29,7 @@ class controleVooEntity {
     required this.qmh_local,
     required this.qmh_destino,
     required this.radio,
-    required this.transpoinder_1,
+    required this.transponder_1,
     required this.transponder_emergencia,
     required this.elevacao_local,
     required this.elevacao_destino,
