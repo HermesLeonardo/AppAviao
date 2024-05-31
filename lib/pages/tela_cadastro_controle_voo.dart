@@ -1,5 +1,6 @@
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:flutter/material.dart';
 import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';
 import '../DTOS/controleVooDTO/controleVoo_dto.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
 
 class tela_criar_conta extends StatelessWidget {
-  const tela_criar_conta({super.key});
+  const tela_criar_conta({super.key}); // Corrigindo a declaração da chave
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class tela_criar_conta extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text("Cadastro - Air Travel"),
+        title: const Text("Cadastro"),
         backgroundColor: const Color.fromARGB(255, 69, 159, 227),
       ),
       body: Stack(
@@ -27,6 +27,10 @@ class tela_criar_conta extends StatelessWidget {
               height: size.height * 0.4,
               width: size.width * 1,
               color: const Color.fromARGB(255, 0, 53, 84),
+              child: Image.asset(
+                'assets/images/aviaosfundo.png',
+                fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço
+              ),
             ),
           ),
           SingleChildScrollView(
@@ -44,6 +48,8 @@ class tela_criar_conta extends StatelessWidget {
                     "CADASTRO",
                     style: TextStyle(
                       color: Colors.blue,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -147,7 +153,8 @@ class tela_criar_conta extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginTela()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginTela()),
                         );
                       },
                     ),
