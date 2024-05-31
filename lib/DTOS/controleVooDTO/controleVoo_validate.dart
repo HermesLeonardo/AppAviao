@@ -8,9 +8,16 @@ mixin class controleVoo_validate {
     return null;
   }
 
+  String? nomeViagemValidate(String nomeViagem) {
+    if (nomeViagem.isEmpty) {
+      return 'Nome da Viagem está vazio';
+    }
+    return null;
+  }
+
   String? controleValidate(String controle) {
     if (controle.isEmpty) {
-      return 'Controle está fazio';
+      return 'Controle está vazio';
     }
     return null;
   }

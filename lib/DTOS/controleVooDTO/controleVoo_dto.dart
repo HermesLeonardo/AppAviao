@@ -5,6 +5,7 @@ part 'controleVoo_validate.dart';
 class controleVoo_dto with controleVoo_validate {
   int? idcontroleVoo;
   String dataViagem;
+  String nomeViagem;
   String controle;
   String lat;
   String lag;
@@ -12,7 +13,7 @@ class controleVoo_dto with controleVoo_validate {
   String qmh_local;
   String qmh_destino;
   String radio;
-  String transpoinder_1;
+  String transponder_1;
   String transponder_emergencia;
   String elevacao_local;
   String elevacao_destino;
@@ -24,6 +25,7 @@ class controleVoo_dto with controleVoo_validate {
   controleVoo_dto({
     this.idcontroleVoo,
     this.dataViagem = '',
+    this.nomeViagem = '',
     this.controle = '',
     this.lat = '',
     this.lag = '',
@@ -37,7 +39,7 @@ class controleVoo_dto with controleVoo_validate {
     this.elevacao_local = '',
     this.elevacao_destino = '',
     this.tempo_voo_estimado = '',
-    this.transpoinder_1 = '',
+    this.transponder_1 = '',
     this.transponder_emergencia = '',
   });
 
@@ -45,6 +47,7 @@ class controleVoo_dto with controleVoo_validate {
     return controleVooEntity(
       idcontroleVoo: idcontroleVoo ?? 0,
       dataViagem: dataViagem,
+      nomeViagem: nomeViagem,
       controle: controle,
       lat: lat,
       lag: lag,
@@ -52,7 +55,7 @@ class controleVoo_dto with controleVoo_validate {
       qmh_local: qmh_local,
       qmh_destino: qmh_destino,
       radio: radio,
-      transpoinder_1: transpoinder_1,
+      transponder_1: transponder_1,
       transponder_emergencia: transponder_emergencia,
       elevacao_local: elevacao_local,
       elevacao_destino: elevacao_destino,
@@ -67,6 +70,7 @@ class controleVoo_dto with controleVoo_validate {
     return controleVoo_dto(
       idcontroleVoo: json['idcontroleVoo'] ?? 0,
       dataViagem: json['dataviagem'] ?? '',
+      nomeViagem: json['nomeViagem'] ?? '',
       controle: json['controle'] ?? '',
       lat: json['lat'] ?? '',
       lag: json['lag'] ?? '',
@@ -74,7 +78,7 @@ class controleVoo_dto with controleVoo_validate {
       qmh_local: json['qmh_local'] ?? '',
       qmh_destino: json['qmh_destino'] ?? '',
       radio: json['radio'] ?? '',
-      transpoinder_1: json['transpoinder_1'] ?? '',
+      transponder_1: json['transpoinder_1'] ?? '',
       transponder_emergencia: json['transponder_emergencia'] ?? '',
       elevacao_local: json['elevacao_local'] ?? '',
       elevacao_destino: json['elevacao_destino'] ?? '',
@@ -89,6 +93,7 @@ class controleVoo_dto with controleVoo_validate {
     return {
       'idcontroleVoo': idcontroleVoo,
       'dataViagem': dataViagem,
+      'nomeViagem': nomeViagem,
       'controle': controle,
       'lat': lat,
       'lag': lag,
@@ -96,7 +101,7 @@ class controleVoo_dto with controleVoo_validate {
       'qmh_local': qmh_local,
       'qmh_destino': qmh_destino,
       'radio': radio,
-      'transpoinder_1': transpoinder_1,
+      'transponder_1': transponder_1,
       'transponder_emergencia': transponder_emergencia,
       'elevacao_local': elevacao_local,
       'elevacao_destino': elevacao_destino,
@@ -109,11 +114,12 @@ class controleVoo_dto with controleVoo_validate {
 
   @override
   String toString() {
-    return 'controleVoo_dto(dataViagem: $dataViagem, contole: $controle)';
+    return 'controleVoo_dto(idcontroleVoo: $idcontroleVoo, dataViagem: $dataViagem, contole: $controle, lat: $lat, lag: $lag, long: $Long, qmh_local: $qmh_local, qmh_destino: $qmh_destino, radio: $radio, transponder_1: $transponder_1, trnasponder_emergencia: $transponder_emergencia, elevacao_local: $elevacao_local, elevacao_destino: $elevacao_destino, altitude_obrigatorio: $altitude_obrigatorio, tempo_voo_estimado: $tempo_voo_estimado, alternativo_1: $alternativo_1, alternativo_2: $alternativo_2)';
   }
 
   void validate() {
     dataViagemValidate(dataViagem);
+    nomeViagemValidate(nomeViagem);
     controleValidate(controle);
     latValidate(lat);
     lagValidate(lag);
@@ -121,7 +127,7 @@ class controleVoo_dto with controleVoo_validate {
     qmh_localValidate(qmh_local);
     qmh_destinoValidate(qmh_destino);
     radioValidate(radio);
-    transpoinder_1Validate(transpoinder_1);
+    transpoinder_1Validate(transponder_1);
     transponder_emergenciaValidate(transponder_emergencia);
     elevacao_localValidate(elevacao_local);
     elevacao_destinoValidate(elevacao_destino);

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -31,8 +32,9 @@ class conexao {
   static const columnPatio = 'patio_aero';
 
   static const _sqlScriptControle = '''
-  CREATE TABLE IF NOT EXISTS plano_voo_controle (
+  CREATE TABLE IF NOT EXISTS controleVoo (
   id_plano_voo INTEGER PRIMARY KEY AUTOINCREMENT,
+  nomeViagem TEXT NOT NULL,
   data_viagem TEXT NOT NULL,
   controle TEXT NOT NULL,
   lat TEXT NOT NULL,
@@ -51,10 +53,11 @@ class conexao {
   alternativo2 TEXT
   )''';
 
-  static const tableControle = 'plano_voo_controle';
+  static const tableControle = 'controleVoo';
 
   static const columnIdPlanoVoo = 'id_plano_voo';
   static const columnDataViagem = 'data_viagem';
+  static const columnNomeViagem = 'nomeViagem';
   static const columnControle = 'controle';
   static const columnLat = 'lat';
   static const columnLag = 'lag';
