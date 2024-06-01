@@ -1,10 +1,6 @@
-import 'dart:ui';
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'tela_cadastro_aeroporto.dart';
-import 'tela_cadastro_controle_voo.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
 
@@ -43,14 +39,14 @@ class tela_inicial extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 30.0),
                 child: Image.asset(
-                  'assets/images/aviaocriartela.png', // Caminho da imagem
-                  fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço
+                  'assets/images/aviaocriartela.png',
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           Positioned(
-            top: size.height * 0.35, // Ajuste a posição vertical do texto
+            top: size.height * 0.35,
             left: 0,
             right: 0,
             child: const Center(
@@ -58,7 +54,7 @@ class tela_inicial extends StatelessWidget {
                 "Olá Piloto Fulano",
                 style: TextStyle(
                   fontSize: 40,
-                  color: Color.fromARGB(255, 255, 255, 255), // Texto em branco
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
             ),
@@ -68,8 +64,7 @@ class tela_inicial extends StatelessWidget {
             child: Container(
               height: size.height * 0.62,
               width: size.width,
-              padding:
-                  const EdgeInsets.only(top: 30.0), // Ajuste de espaçamento
+              padding: const EdgeInsets.only(top: 30.0),
               child: Column(
                 children: [
                   const SizedBox(height: 100),
@@ -117,7 +112,7 @@ class tela_inicial extends StatelessWidget {
                         'Alterar Informações do Cadastro',
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.black, // Texto em preto
+                          color: Colors.black,
                         ),
                       ),
                     ),

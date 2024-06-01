@@ -27,7 +27,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => const tela_cadastro_controle_voo()),
+                builder: (context) => const tela_lista_controlevoo()),
           );
         },
         child: const Icon(Icons.add),
