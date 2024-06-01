@@ -440,6 +440,7 @@ class _tela_cadastro_controle_vooState
     'alternativo 1': '',
     'alternativo 2': '',
   };
+  
   List<ControleVooInfoWidget> controleVooInforWidgets = [];
 
   //Verificar se for necessário criar um addControleVoo
