@@ -2,9 +2,11 @@
 
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
+import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
 import 'package:appaviao/classes_dao/trecho_dao.dart';
+import 'package:appaviao/listagem_trecho/listagem_trecho.dart';
 
 class tela_cadastro_trecho extends StatefulWidget {
   const tela_cadastro_trecho({super.key});
@@ -248,6 +250,26 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ),
               ],
             ),
+            const SizedBox(height: 15),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _inserirTrecho();
+                }
+              },
+              child: const Text("Adicionar Trecho"),
+            ),
+
+            const SizedBox(height: 10), // Espaço entre os botões
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const listagem_trecho()));
+              },
+              child: const Text("Visualizar Trechos Cadastrados"),
+
             /* if (trechoInfoWidgets.isNotEmpty)
               SizedBox(
                 height: 500, // Defina uma altura adequada
@@ -270,6 +292,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Adicionar Trecho"),
             ), */
+            )
           ],
         ),
       ),

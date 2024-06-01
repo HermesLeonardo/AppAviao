@@ -4,7 +4,8 @@ import 'package:sqflite/sqflite.dart';
 
 class aeroporto_dao {
   // final Database _db;
-  Future<Database> get _db async => await conexao.instance.database;
+  Future<Database> get _db async =>
+      await conexao.instance.database;
 
   Future<void> insertAeroporto(aeroporto_dto aeroportoDto) async {
     final db = await _db;

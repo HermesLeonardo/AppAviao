@@ -74,6 +74,37 @@ class conexao {
   static const columnAlternativo1 = 'alternativo1';
   static const columnAlternativo2 = 'alternativo2';
 
+
+  static const _sqlScriptTrecho = '''
+  CREATE TABLE IF NOT EXISTS trecho (
+  idtrecho INTEGER PRIMARY KEY AUTOINCREMENT,
+  de_trecho TEXT NOT NULL,
+  para_trecho TEXT NOT NULL,
+  trecho_trecho TEXT NOT NULL,
+  proa_trecho TEXT NOT NULL,
+  dist_trecho TEXT NOT NULL,
+  corredor_trecho TEXT NOT NULL,
+  altCorredor_trecho TEXT NOT NULL,
+  frequencia_trecho TEXT NOT NULL,
+  frequenciaAlter_trecho TEXT NOT NULL
+  )''';
+
+  static const tableTrecho = 'trecho';
+
+  static const columnIdtrecho = 'idtrecho';
+  static const columnDe = 'de_trecho';
+  static const columnPara = 'para_trecho';
+  static const columnTrecho = 'trecho_trecho';
+  static const columnProa = 'proa_trecho';
+  static const columnDist = 'dist_trecho';
+  static const columnCorredor = 'corredor_trecho';
+  static const columnAltCorredor = 'altCorredor_trecho';
+  static const columnFrequencia = 'frequencia_trecho';
+  static const columnFrequenciaAlter = 'frequenciaAlter_trecho';
+
+
+
+
   //singleton
   conexao._privateConstuctor();
   static final conexao instance = conexao._privateConstuctor();
@@ -93,6 +124,8 @@ class conexao {
       onCreate: (db, version) async {
         await db.execute(_sqlScriptaeroporto);
         await db.execute(_sqlScriptControle);
+        await db.execute(_sqlScriptTrecho);
+        print('tabelas criadas pra porra!');
       },
       version: 1,
     );
