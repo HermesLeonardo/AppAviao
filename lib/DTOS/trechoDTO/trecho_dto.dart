@@ -52,7 +52,7 @@ class trecho_dto with trecho_validade {
       trecho_trecho: json['trecho_trecho'] ?? '',
       proa_trecho: json['proa_trecho'] ?? '',
       dist_trecho: json['dist_trecho'] ?? '',
-      corredor_trecho: json['fir_aero'] ?? '',
+      corredor_trecho: json['corredor_aero'] ?? '',
       altCorredor_trecho: json['altCorredor_trecho'] ?? '',
       frequencia_trecho: json['frequencia_trecho'] ?? '',
       frequenciaAlter_trecho: json['frequenciaAlter_trecho'] ?? '',
@@ -77,7 +77,7 @@ class trecho_dto with trecho_validade {
 
   @override
   String toString() {
-    return 'aeroporto_dto(idtrecho: $idtrecho, de_trecho: $de_trecho, para_trecho: $para_trecho, trecho_trecho: $trecho_trecho, proa_trecho: $proa_trecho, dist_trecho: $dist_trecho, corredor_trecho: $corredor_trecho, altCorredor_trecho: $altCorredor_trecho, frequencia_trecho: $frequencia_trecho, frequenciaAlter_trecho: $frequenciaAlter_trecho)';
+    return 'trecho_dto(idtrecho: $idtrecho, de_trecho: $de_trecho, para_trecho: $para_trecho, trecho_trecho: $trecho_trecho, proa_trecho: $proa_trecho, dist_trecho: $dist_trecho, corredor_trecho: $corredor_trecho, altCorredor_trecho: $altCorredor_trecho, frequencia_trecho: $frequencia_trecho, frequenciaAlter_trecho: $frequenciaAlter_trecho)';
   }
 
   void validate() {

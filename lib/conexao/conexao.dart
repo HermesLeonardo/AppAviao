@@ -8,76 +8,55 @@ class conexao {
 
   static const _sqlScriptaeroporto = '''
   CREATE TABLE IF NOT EXISTS aeroporto (
-  idaeroporto INTEGER PRIMARY KEY AUTOINCREMENT,
-  codigo_aero TEXT NOT NULL,
-  nome_aero TEXT NOT NULL,
-  twr_aero TEXT NOT NULL,
-  solo_aero TEXT NOT NULL,
-  cabeceira_aero TEXT NOT NULL,
-  fir_aero TEXT NOT NULL,
-  metragem_pista TEXT NOT NULL,
-  patio_aero TEXT NOT NULL
+    idaeroporto INTEGER PRIMARY KEY AUTOINCREMENT,
+    codigo_aero TEXT NOT NULL,
+    nome_aero TEXT NOT NULL,
+    twr_aero TEXT NOT NULL,
+    solo_aero TEXT NOT NULL,
+    cabeceira_aero TEXT NOT NULL,
+    fir_aero TEXT NOT NULL,
+    metragem_pista TEXT NOT NULL,
+    patio_aero TEXT NOT NULL
   )''';
-
-  static const table = 'aeroporto';
-
-  static const columnId = 'idaeroporto';
-  static const columnCodigo = 'codigo_aero';
-  static const columnNome = 'nome_aero';
-  static const columnTwr = 'twr_aero';
-  static const columnSolo = 'solo_aero';
-  static const columnCabeceira = 'cabeceira_aero';
-  static const columnFir = 'fir_aero';
-  static const columnMetragemPista = 'metragem_pista';
-  static const columnPatio = 'patio_aero';
 
   static const _sqlScriptControle = '''
   CREATE TABLE IF NOT EXISTS controleVoo (
-  id_plano_voo INTEGER PRIMARY KEY AUTOINCREMENT,
-  nomeViagem TEXT NOT NULL,
-  data_viagem TEXT NOT NULL,
-  controle TEXT NOT NULL,
-  lat TEXT NOT NULL,
-  lag TEXT NOT NULL,
-  long TEXT NOT NULL,
-  qmh_local TEXT,
-  qmh_destino TEXT,
-  radio TEXT,
-  transponder1 TEXT NOT NULL,
-  transponder_emergencia TEXT NOT NULL,
-  elevacao_local TEXT NOT NULL,
-  elevacao_destino TEXT NOT NULL,
-  altitude_obrigatoria TEXT NOT NULL,
-  tempo_voo_estimado TEXT,
-  alternativo1 TEXT,
-  alternativo2 TEXT
+    id_plano_voo INTEGER PRIMARY KEY AUTOINCREMENT,
+    nomeViagem TEXT NOT NULL,
+    data_viagem TEXT NOT NULL,
+    controle TEXT NOT NULL,
+    lat TEXT NOT NULL,
+    lag TEXT NOT NULL,
+    long TEXT NOT NULL,
+    qmh_local TEXT,
+    qmh_destino TEXT,
+    radio TEXT,
+    transponder1 TEXT NOT NULL,
+    transponder_emergencia TEXT NOT NULL,
+    elevacao_local TEXT NOT NULL,
+    elevacao_destino TEXT NOT NULL,
+    altitude_obrigatoria TEXT NOT NULL,
+    tempo_voo_estimado TEXT,
+    alternativo1 TEXT,
+    alternativo2 TEXT
   )''';
 
-  static const tableControle = 'controleVoo';
+  static const _sqlScriptTrecho = '''
+  CREATE TABLE IF NOT EXISTS trecho (
+    idtrecho INTEGER PRIMARY KEY AUTOINCREMENT,
+    de_trecho TEXT NOT NULL,
+    para_trecho TEXT NOT NULL,
+    trecho_trecho TEXT NOT NULL,
+    proa_trecho TEXT NOT NULL,
+    dist_trecho TEXT NOT NULL,
+    corredor_trecho TEXT NOT NULL,
+    altCorredor_trecho TEXT NOT NULL,
+    frequencia_trecho TEXT NOT NULL,
+    frequenciaAlter_trecho TEXT NOT NULL
+  )''';
 
-  static const columnIdPlanoVoo = 'id_plano_voo';
-  static const columnDataViagem = 'data_viagem';
-  static const columnNomeViagem = 'nomeViagem';
-  static const columnControle = 'controle';
-  static const columnLat = 'lat';
-  static const columnLag = 'lag';
-  static const columnLong = 'long';
-  static const columnQmhLocal = 'qmh_local';
-  static const columnQmhDestino = 'qmh_destino';
-  static const columnRadio = 'radio';
-  static const columnTransponder1 = 'transponder1';
-  static const columnTransponderEmergencia = 'transponder_emergencia';
-  static const columnElevacaoLocal = 'elevacao_local';
-  static const columnElevacaoDestino = 'elevacao_destino';
-  static const columnAltitudeObrigatoria = 'altitude_obrigatoria';
-  static const columnTempoVooEstimado = 'tempo_voo_estimado';
-  static const columnAlternativo1 = 'alternativo1';
-  static const columnAlternativo2 = 'alternativo2';
-
-  //singleton
-  conexao._privateConstuctor();
-  static final conexao instance = conexao._privateConstuctor();
-  // tem somente uma referência ao banco de dados - com safenull
+  conexao._privateConstructor();
+  static final conexao instance = conexao._privateConstructor();
 
   static Database? _database;
 
@@ -86,28 +65,78 @@ class conexao {
   }
 
   Future<Database> initDB() async {
-    databaseFactory = databaseFactoryFfi; //FACTORY TA AQUI
-    // instancia o db na primeira vez que for acessado
+    sqfliteFfiInit(); // Inicializa o ffi
+    databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
+    final path = join(await getDatabasesPath(), _dbname);
+
+    // Exclui o banco de dados existente
+    await deleteDatabase(path);
+
     return openDatabase(
-      join(await getDatabasesPath(), _dbname),
+      path,
       onCreate: (db, version) async {
         await db.execute(_sqlScriptaeroporto);
         await db.execute(_sqlScriptControle);
+        await db.execute(_sqlScriptTrecho);
+        print('Tabelas criadas com sucesso!');
       },
-      version: 1,
+      version: 1, // Atualize a versão do banco de dados
     );
   }
-  /*
-  Future<Database> getDatabase() async {
-    // instancia o db na primeira vez que for acessado
-    return openDatabase(
-      join(await getDatabasesPath(), _dbname),
-      onCreate: (db, version) async {
-        return db.execute(_sqlScriptaeroporto);
-        return db.execute(_sqlScriptcontrole);
-      },
-      version: 1,
+}
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Testando Banco de Dados"),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () async {
+              var db = await conexao.instance.database;
+              print("Banco de dados inicializado: $db");
+
+              // Teste para verificar se a tabela 'trecho' foi criada
+              try {
+                List<Map<String, dynamic>> result = await db.query('trecho');
+                print(
+                    "Tabela 'trecho' existe e contém ${result.length} registros.");
+              } catch (e) {
+                print("Erro ao acessar a tabela 'trecho': $e");
+              }
+              try {
+                List<Map<String, dynamic>> result = await db.query('aeroporto');
+                print(
+                    "Tabela 'aeroporto' existe e contém ${result.length} registros.");
+              } catch (e) {
+                print("Erro ao acessar a tabela 'aeroporto': $e");
+              }
+              try {
+                List<Map<String, dynamic>> result =
+                    await db.query('controleVoo');
+                print(
+                    "Tabela 'controleVoo' existe e contém ${result.length} registros.");
+              } catch (e) {
+                print("Erro ao acessar a tabela 'controleVoo': $e");
+              }
+            },
+            child: const Text("Iniciar Banco de Dados"),
+          ),
+        ),
+      ),
     );
   }
-  */
 }
