@@ -63,347 +63,348 @@ class _tela_cadastro_controle_vooState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        appBar: AppBar(
-          title: const Text(
-            "Controle de Voo",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      appBar: AppBar(
+        title: const Text(
+          "Controle de Voo",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
-          backgroundColor: const Color.fromARGB(255, 39, 179, 255),
         ),
-        body: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Data da Viagem",
-                      controller: dataViagemController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a data da viagem';
-                        }
-                        return null;
-                      },
-                    ),
+        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
+      ),
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Data da Viagem",
+                    controller: dataViagemController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a data da viagem';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Nome da Viagem",
+                    controller: nomeViagemContrelloer,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a viagem';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Nome da Viagem",
-                      controller: nomeViagemContrelloer,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a viagem';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Controle",
+                    controller: controleController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o controle';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Controle",
-                      controller: controleController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o controle';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "QMH Local",
+                    controller: qmh_localController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o QNH Local';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "QMH Dest",
+                    controller: qmh_destinoController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o QNH Dest';
+                      }
+                      return null;
+                    },
                   ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "QMH Local",
-                      controller: qmh_localController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o QNH Local';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Lat",
+                    controller: latController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Lat';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Long",
+                    controller: longController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Long';
+                      }
+                      return null;
+                    },
                   ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "QMH Dest",
-                      controller: qmh_destinoController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o QNH Dest';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Lag",
+                    controller: lagController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Lag';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Lat",
-                      controller: latController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Lat';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Transponder de Emergência",
+                    controller: transponder_emergenciaController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Transponder de Emergência';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Tranponder 1",
+                    controller: transponder_1Controller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Tranponder 1';
+                      }
+                      return null;
+                    },
                   ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Long",
-                      controller: longController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Long';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Elevação destino",
+                    controller: elevacao_destinoController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Elevação destino';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Elevação local",
+                    controller: elevacao_localController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Elevação local';
+                      }
+                      return null;
+                    },
                   ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Lag",
-                      controller: lagController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Lag';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Tempo de Voo Esti",
+                    controller: tempo_voo_estimadoController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Tempo de Voo Esti';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Transponder de Emergência",
-                      controller: transponder_emergenciaController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Transponder de Emergência';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Altitude Obrigatoria",
+                    controller: altitude_obrigatorioController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a data da viagem';
+                      }
+                      return null;
+                    },
                   ),
-                  const SizedBox(
-                    width: 5,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Alternativo 1",
+                    controller: alternativo_1Controller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Alternativo 1';
+                      }
+                      return null;
+                    },
                   ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Tranponder 1",
-                      controller: transponder_1Controller,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Tranponder 1';
-                        }
-                        return null;
-                      },
-                    ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Alternativo 2",
+                    controller: alternativo_2Controller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Alternativo 2';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Elevação destino",
-                      controller: elevacao_destinoController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a Elevação destino';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Elevação local",
-                      controller: elevacao_localController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a Elevação local';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Tempo de Voo Esti",
-                      controller: tempo_voo_estimadoController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o Tempo de Voo Esti';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Altitude Obrigatoria",
-                      controller: altitude_obrigatorioController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a data da viagem';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Alternativo 1",
-                      controller: alternativo_1Controller,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a Alternativo 1';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: custom_from_text_field_controle_voo(
-                      labelText: "Alternativo 2",
-                      controller: alternativo_2Controller,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a Alternativo 2';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 255, 255, 255))),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _inserirControlevoo();
+                  showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Controle de Voo'),
+                        content:
+                            const Text('Controle de Voo Salvo com sucesso!!!'),
+                        actions: <Widget>[
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                            ),
+                            child: const Text('Confirmar'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              child: const Text("Adicionar Controle de voo"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            ElevatedButton(
                 style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(
                         Color.fromARGB(255, 255, 255, 255))),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _inserirControlevoo();
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Controle de Voo'),
-                          content: const Text(
-                              'Controle de Voo Salvo com sucesso!!!'),
-                          actions: <Widget>[
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                textStyle:
-                                    Theme.of(context).textTheme.labelLarge,
-                              ),
-                              child: const Text('Confirmar'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const tela_lista_controlevoo()),
+                  );
                 },
-                child: const Text("Adicionar Controle de voo"),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              ElevatedButton(
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 255, 255, 255))),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const tela_lista_controlevoo()),
-                    );
-                  },
-                  child: const Text("Lista de Controle de Voo"))
-            ],
-          ),
-        ));
+                child: const Text("Lista de Controle de Voo")),
+          ],
+        ),
+      ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
+    );
   }
 }
 
