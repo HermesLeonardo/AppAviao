@@ -4,12 +4,11 @@ import 'package:sqflite/sqflite.dart';
 
 class trecho_dao {
   // final Database _db;
-  Future<Database> get _db async =>
-      await conexao.instance.database;
+  Future<Database> get _db async => await conexao.instance.database;
 
-  Future<void> insertTrecho(trecho_dto trecho) async {
+  Future<void> insertTrecho(trecho_dto trechoDto) async {
     final db = await _db;
-    await db.insert('trecho', trecho.toMap(),
+    await db.insert('trecho', trechoDto.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 

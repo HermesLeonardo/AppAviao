@@ -3,6 +3,7 @@
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
 import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
 import 'package:appaviao/classes_dao/trecho_dao.dart';
@@ -270,7 +271,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Visualizar Trechos Cadastrados"),
 
-            /* if (trechoInfoWidgets.isNotEmpty)
+              /* if (trechoInfoWidgets.isNotEmpty)
               SizedBox(
                 height: 500, // Defina uma altura adequada
                 child: ListView.builder(
@@ -296,6 +297,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
           ],
         ),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
     );
   }
 }

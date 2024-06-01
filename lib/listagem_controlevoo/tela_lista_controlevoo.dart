@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
         },
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
     );
   }
 }
