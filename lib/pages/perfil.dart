@@ -175,6 +175,30 @@ class PerfilState extends State<Perfil> {
     });
   }
 
+  void salvarAlteracoes() {
+    setState(() {
+      widget.usuario.nome = nomeController.text;
+      widget.usuario.email = emailController.text;
+      widget.usuario.telefone = telefoneController.text;
+      widget.usuario.senha = senhaController.text;
+      widget.usuario.modeloAeronave = modeloAeronaveController.text;
+      widget.usuario.codigoAeronave = codigoAeronaveController.text;
+    });
+
+    // Aqui você pode adicionar a lógica para salvar as alterações no banco de dados, por exemplo:
+    // Chamada de função para atualizar o usuário no banco de dados
+    // updateUserInDatabase(widget.usuario);
+
+    setState(() {
+      editandoNome = false;
+      editandoEmail = false;
+      editandoTelefone = false;
+      editandoSenha = false;
+      editandoModeloAeronave = false;
+      editandoCodigoAeronave = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -312,18 +336,8 @@ class PerfilState extends State<Perfil> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        // Lógica para salvar as alterações
-                        setState(() {
-                          editandoNome = false;
-                          editandoEmail = false;
-                          editandoTelefone = false;
-                          editandoSenha = false;
-                          editandoModeloAeronave = false;
-                          editandoCodigoAeronave = false;
-                        });
-                      },
-                      child: const Text("Salvar"),
+                      onPressed: salvarAlteracoes,
+                      child: const Text("Salvar Alterações"),
                     ),
                     ElevatedButton(
                       onPressed: () {
