@@ -44,11 +44,6 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      appBar: AppBar(
-        title: const Text('Listagem Controle Voo'),
-        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
-      ),
       body: FutureBuilder<List<controleVoo_dto>>(
         future: listacontroleVooDTO,
         builder: (context, snapshot) {
@@ -63,6 +58,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
             for (var controleVoo in snapshot.data!) {
               listaItenscontroleVoo.add(Lista_controleVoo(
                 nomeViagem: controleVoo.nomeViagem,
+                dataViagem: controleVoo.dataViagem,
                 onEdit: () => _editControleVoo(controleVoo),
                 onDelete: () => _deleteControleVoo(controleVoo.idcontroleVoo!),
               ));
@@ -76,6 +72,11 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
             );
           }
         },
+      ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      appBar: AppBar(
+        title: const Text('Listagem Controle Voo'),
+        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

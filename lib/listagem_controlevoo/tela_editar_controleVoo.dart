@@ -46,7 +46,7 @@ class _EditarControleVooState extends State<EditarControleVoo> {
         TextEditingController(text: widget.controleVoo.controle);
     _lagController = TextEditingController(text: widget.controleVoo.lag);
     _latController = TextEditingController(text: widget.controleVoo.lat);
-    _longController = TextEditingController(text: widget.controleVoo.Long);
+    _longController = TextEditingController(text: widget.controleVoo.long);
     _qmh_localController =
         TextEditingController(text: widget.controleVoo.qmh_local);
     _qmh_destinoController =
@@ -81,10 +81,11 @@ class _EditarControleVooState extends State<EditarControleVoo> {
       controleVoo_dto updateContoleVoo = controleVoo_dto(
         idcontroleVoo: widget.controleVoo.idcontroleVoo,
         nomeViagem: widget.controleVoo.nomeViagem,
+        dataViagem: widget.controleVoo.dataViagem,
         controle: widget.controleVoo.controle,
         lag: widget.controleVoo.lag,
         lat: widget.controleVoo.lat,
-        Long: widget.controleVoo.Long,
+        long: widget.controleVoo.long,
         qmh_local: widget.controleVoo.qmh_local,
         qmh_destino: widget.controleVoo.qmh_destino,
         radio: widget.controleVoo.radio,
