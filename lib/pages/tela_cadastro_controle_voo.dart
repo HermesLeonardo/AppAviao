@@ -1,8 +1,8 @@
 import 'package:appaviao/Custons/custom_tela_controle_voo/custom_from_text_field_controlevoo.dart';
+import 'package:appaviao/classes_dao/controleVoo_dao.dart';
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:flutter/material.dart';
-import '../Custons/custom_tela_controle_voo/caixa_info_widget_controlevoo.dart';
 import '../DTOS/controleVooDTO/controleVoo_dto.dart';
 
 class tela_cadastro_controle_voo extends StatefulWidget {
@@ -16,8 +16,6 @@ class tela_cadastro_controle_voo extends StatefulWidget {
 class _tela_cadastro_controle_vooState
     extends State<tela_cadastro_controle_voo> {
   final _formKey = GlobalKey<FormState>();
-  final List<Map<String, String>> _formDatas = [];
-
   final dataViagemController = TextEditingController();
   final nomeViagemContrelloer = TextEditingController();
   final controleController = TextEditingController();
@@ -35,8 +33,6 @@ class _tela_cadastro_controle_vooState
   final tempo_voo_estimadoController = TextEditingController();
   final transponder_1Controller = TextEditingController();
   final transponder_emergenciaController = TextEditingController();
-
-  final bool _showInformation = false;
 
   void _inserirControlevoo() {
     final controlevoo = controleVoo_dto(
@@ -58,6 +54,7 @@ class _tela_cadastro_controle_vooState
       transponder_1: transponder_1Controller.text,
       transponder_emergencia: transponder_emergenciaController.text,
     );
+    controleVoo_dao().insertControleVoo(controlevoo);
   }
 
   @override
