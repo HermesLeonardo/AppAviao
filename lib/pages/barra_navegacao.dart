@@ -37,7 +37,7 @@ class BarraNavegacao extends StatelessWidget {
         case 3: // Novo caso para navegar para a nova tela
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const tela_criar_conta()),
+            MaterialPageRoute(builder: (context) => const TelaCadastro()),
           );
           break;
         default:

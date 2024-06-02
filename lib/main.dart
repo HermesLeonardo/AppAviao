@@ -28,6 +28,5 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const LoginTela());
-        home: const tela_cadastro_trecho());
   }
 }

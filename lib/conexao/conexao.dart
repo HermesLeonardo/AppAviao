@@ -55,7 +55,6 @@ class conexao {
     frequenciaAlter_trecho TEXT NOT NULL
   )''';
 
-
   static const _sqlScriptUsuarios = '''
   CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,8 +69,6 @@ class conexao {
   // Singleton
   conexao._privateConstuctor();
   static final conexao instance = conexao._privateConstuctor();
-  conexao._privateConstructor();
-  static final conexao instance = conexao._privateConstructor();
 
   static Database? _database;
 
@@ -80,7 +77,6 @@ class conexao {
   }
 
   Future<Database> initDB() async {
-
     databaseFactory = databaseFactoryFfi;
     sqfliteFfiInit(); // Inicializa o ffi
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
@@ -88,7 +84,6 @@ class conexao {
 
     // Exclui o banco de dados existente
     await deleteDatabase(path);
-
 
     return openDatabase(
       path,
@@ -98,12 +93,10 @@ class conexao {
         await db.execute(_sqlScriptUsuarios);
         await db.execute(_sqlScriptTrecho);
         print('Tabelas criadas com sucesso!');
-
       },
       version: 1, // Atualize a versão do banco de dados
     );
   }
-
 
   Future<void> inserirUsuario(Map<String, dynamic> usuario) async {
     final db = await database;
@@ -134,7 +127,7 @@ class conexao {
     );
   }
 }
-  /*
+/*
   Future<Database> getDatabase() async {
     // instancia o db na primeira vez que for acessado
     return openDatabase(
@@ -147,8 +140,6 @@ class conexao {
     );
   }
   */
-
-}
 
 void main() {
   runApp(const MyApp());
