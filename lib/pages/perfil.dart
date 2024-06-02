@@ -186,7 +186,7 @@ class PerfilState extends State<Perfil> {
         color: const Color.fromARGB(255, 69, 159, 227),
         child: Container(
           color: const Color.fromARGB(255, 0, 53, 84),
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 200),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -261,7 +261,7 @@ class PerfilState extends State<Perfil> {
                       child: CustomfromPerfil(
                         labelText: "Senha",
                         controller: senhaController,
-                        obscureText: true,
+                        obscureText: false,
                         readOnly: !editandoSenha,
                       ),
                     ),
@@ -330,7 +330,7 @@ class PerfilState extends State<Perfil> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const tela_inicial()));
+                                builder: (context) => const Tela_Inicial()));
                       },
                       child: const Text("Voltar"),
                     ),

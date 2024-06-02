@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/listagem_trecho/listagem_trecho.dart';
 import 'package:appaviao/listagem_aeroporto/TesteListagem.dart';
@@ -11,6 +12,40 @@ class BarraNavegacao extends StatelessWidget {
     super.key,
     required this.currentIndex,
   });
+
+  void _onItemTapped(BuildContext context, int index) {
+    if (index != currentIndex) {
+      switch (index) {
+        case 0:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const tela_inicial()),
+          );
+          break;
+        case 1:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const TesteListagem()),
+          );
+          break;
+        case 2:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const tela_lista_controlevoo()),
+          );
+          break;
+        case 3: // Novo caso para navegar para a nova tela
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const TelaCadastro()),
+          );
+          break;
+        default:
+          break;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

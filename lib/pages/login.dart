@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/primeira_tela.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
@@ -142,13 +143,14 @@ class _LoginTelaState extends State<LoginTela> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const tela_inicial(),
+                            builder: (context) => Tela_Inicial(),
+                            builder: (context) => const PrimeiraTela(),
                           ),
                         );
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF003049),
+                      backgroundColor: const Color.fromARGB(255, 3, 89, 135),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
