@@ -1,10 +1,10 @@
 class UsuarioDTO {
-  final String nome;
-  final String telefone;
-  final String email;
-  final String senha;
-  final String modeloAeronave;
-  final String codigoAeronave;
+  String nome;
+  String telefone;
+  String email;
+  String senha;
+  String modeloAeronave;
+  String codigoAeronave;
 
   UsuarioDTO({
     required this.nome,
@@ -13,6 +13,16 @@ class UsuarioDTO {
     required this.senha,
     required this.modeloAeronave,
     required this.codigoAeronave,
-    
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'nome': nome,
+      'telefone': telefone,
+      'email': email,
+      'senha': senha,
+      'modeloAeronave': modeloAeronave,
+      'codigoAeronave': codigoAeronave,
+    };
+  }
 }
