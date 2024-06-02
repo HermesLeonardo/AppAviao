@@ -40,8 +40,9 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(211, 216, 216, 216),
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: const Text('Cadastro de Aeroporto'),
       ),
       body: Form(

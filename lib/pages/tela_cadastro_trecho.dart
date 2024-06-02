@@ -4,6 +4,8 @@
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
+import 'package:appaviao/classes_dao/trecho_dao.dart';
 
 class tela_cadastro_trecho extends StatefulWidget {
   const tela_cadastro_trecho({super.key});
@@ -12,8 +14,10 @@ class tela_cadastro_trecho extends StatefulWidget {
   State<tela_cadastro_trecho> createState() => _tela_cadastro_trechoState();
 }
 
+
+
 class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
-  final _formKey = GlobalKey<FormState>();
+ /*  final _formKey = GlobalKey<FormState>();
   final List<Map<String, String>> _formDatas = [];
   final Map<String, String> _formData = {
     'De': '',
@@ -37,11 +41,38 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
       });
       print(_formData);
     }
+  } */
+
+  final _formKey = GlobalKey<FormState>();
+  final deController = TextEditingController();
+  final paraController = TextEditingController();
+  final trechoController = TextEditingController();
+  final proaController = TextEditingController();
+  final distController = TextEditingController();
+  final corredorController = TextEditingController();
+  final altCorredorController = TextEditingController();
+  final frequenciaController = TextEditingController();,
+  final frequenciaAlterController = TextEditingController();
+
+    void _inserirTrecho() {
+    final trecho = trecho_dto(
+      de_trecho: deController.text,
+      para_trecho: paraController.text,
+      trecho_trecho: trechoController.text,
+      proa_trecho: proaController.text,
+      dist_trecho: distController.text,
+      corredor_trecho: corredorController.text,
+      altCorredor_trecho: altCorredorController.text,
+      frequencia_trecho: frequenciaController.text,
+      frequenciaAlter_trecho: frequenciaAlterController.text,
+    );
+    trecho_dao().insertTrecho(trecho);
   }
 
-  List<TrechoInfoWidget> trechoInfoWidgets = [];
 
-  void _addTrecho() {
+ // List<TrechoInfoWidget> trechoInfoWidgets = [];
+
+/*   void _addTrecho() {
     setState(() {
       trechoInfoWidgets.add(
         TrechoInfoWidget(
@@ -59,7 +90,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
         ),
       );
     });
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +109,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'De',
-                    onSaved: (value) => _formData['De'] = value ?? '',
+                    controller: deController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira de onde irá partir';
@@ -94,7 +125,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Para',
-                    onSaved: (value) => _formData['Para'] = value ?? '',
+                    controller: paraController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira Para onde irá';
@@ -113,7 +144,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Trecho',
-                    onSaved: (value) => _formData['Trecho'] = value ?? '',
+                    controller: trechoController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o Trecho de onde irá passar';
@@ -128,7 +159,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Proa',
-                    onSaved: (value) => _formData['Proa'] = value ?? '',
+                    controller: proaController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a Proa do seu trecho';
@@ -143,7 +174,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Dist. 184MN',
-                    onSaved: (value) => _formData['Dist. 184MN'] = value ?? '',
+                    controller: distController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o Dist. 184MN do seu trecho';
@@ -165,7 +196,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Corredor',
-                    onSaved: (value) => _formData['Corredor'] = value ?? '',
+                    controller: corredorController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o Corredor do seu trecho';
@@ -180,8 +211,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Alt. Corredor',
-                    onSaved: (value) =>
-                        _formData['Alt. Corredor'] = value ?? '',
+                    controller: altCorredorController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a Altura do Corredor do seu trecho';
@@ -196,7 +226,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Frequencia',
-                    onSaved: (value) => _formData['Frequencia'] = value ?? '',
+                    controller: frequenciaController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a Frequencia do seu trecho';
@@ -211,8 +241,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Frequencia. Alt',
-                    onSaved: (value) =>
-                        _formData['Frequancia. ALt'] = value ?? '',
+                    controller: frequenciaAlterController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a Frequancia alternativa do seu trecho';
@@ -223,7 +252,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ),
               ],
             ),
-            if (trechoInfoWidgets.isNotEmpty)
+            /* if (trechoInfoWidgets.isNotEmpty)
               SizedBox(
                 height: 500, // Defina uma altura adequada
                 child: ListView.builder(
@@ -244,7 +273,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 }
               },
               child: const Text("Adicionar Trecho"),
-            ),
+            ), */
             
           ],
         ),
