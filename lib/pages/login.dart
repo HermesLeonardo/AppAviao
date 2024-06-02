@@ -148,6 +148,7 @@ class _LoginTelaState extends State<LoginTela> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF003049),
                       backgroundColor: const Color.fromARGB(255, 3, 89, 135),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
@@ -171,6 +172,9 @@ class _LoginTelaState extends State<LoginTela> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TelaCadastro()));
                         context,
                         MaterialPageRoute(
                           builder: (context) => const tela_criar_conta(),
