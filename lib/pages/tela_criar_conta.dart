@@ -1,11 +1,12 @@
-import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
+import 'package:appaviao/conexao/conexao.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
-import 'package:appaviao/Custons/custom_tela_perfil/cutom_from_perfil.dart';
+import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/perfil.dart';
 
 class TelaCadastro extends StatefulWidget {
-  const TelaCadastro({super.key});
+  const TelaCadastro({Key? key}) : super(key: key);
 
   @override
   _TelaCadastroState createState() => _TelaCadastroState();
@@ -21,7 +22,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  void cadastrar() {
+  void cadastrar() async {
     if (formKey.currentState!.validate()) {
       UsuarioDTO usuarioDTO = UsuarioDTO(
         nome: nomeController.text,
@@ -32,12 +33,18 @@ class _TelaCadastroState extends State<TelaCadastro> {
         codigoAeronave: codigoAeronaveController.text,
       );
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Perfil(usuario: usuarioDTO),
-        ),
-      );
+      try {
+        final db = await conexao.instance.database;
+        await db.insert('usuarios', usuarioDTO.toMap());
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Perfil(usuario: usuarioDTO),
+          ),
+        );
+      } catch (e) {
+        print("Erro ao cadastrar usuário: $e");
+      }
     }
   }
 
@@ -82,33 +89,33 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Nome completo",
                     controller: nomeController,
                   ),
                   const SizedBox(height: 15),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Email",
                     controller: emailController,
                   ),
                   const SizedBox(height: 15),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Telefone",
                     controller: telefoneController,
                   ),
                   const SizedBox(height: 15),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Senha",
                     controller: senhaController,
                     obscureText: true,
                   ),
                   const SizedBox(height: 15),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Modelo da Aeronave",
                     controller: modeloAeronaveController,
                   ),
                   const SizedBox(height: 15),
-                  CustomfromPerfil(
+                  CustomFormCadastro(
                     labelText: "Código da Aeronave",
                     controller: codigoAeronaveController,
                   ),

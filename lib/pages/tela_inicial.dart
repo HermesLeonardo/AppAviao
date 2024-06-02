@@ -1,6 +1,8 @@
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
@@ -109,7 +111,11 @@ class tela_inicial extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          // Add functionality for 'Alterar Informações do Cadastro' button
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const TelaCadastro())));
                         },
                         child: const Text(
                           'Alterar Informações do Cadastro',
