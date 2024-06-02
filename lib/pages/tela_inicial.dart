@@ -1,154 +1,165 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:appaviao/pages/login.dart'; // Certifique-se de que o caminho está correto
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class tela_inicial extends StatelessWidget {
-  const tela_inicial({super.key});
+class Tela_Inicial extends StatefulWidget {
+  const Tela_Inicial({super.key});
 
+  @override
+  State<Tela_Inicial> createState() => _TelaInicialState();
+}
+
+class _TelaInicialState extends State<Tela_Inicial> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text("AIR TRAVEL"),
-        backgroundColor: const Color.fromARGB(255, 69, 159, 227),
-      ),
-      body: Center(
-        child: Stack(
-          children: <Widget>[
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(180)),
-              child: Container(
-                height: size.height * 0.4,
-                width: size.width * 1,
-                color: const Color.fromARGB(255, 0, 48, 73),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: size.height * 0.5,
-                width: size.height,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(120)),
-                ),
-              ),
-            ),
-            Form(
-                child: Column(
-              children: [
-                const SizedBox(height: 30),
-                const SizedBox(height: 330, width: 40000),
-                SizedBox(
-                  height: 100,
-                  width: 600,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 69, 159, 227)),
+      backgroundColor: const Color(0xFF003049),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                child: Container(
+                  width: size.width,
+                  height: 290,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100000),
+                      bottomRight: Radius.circular(100000),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const tela_cadastro_trecho())));
-                    },
-                    child: const Text(
-                      'Cadastrar Trecho',
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: Color.fromARGB(255, 247, 247, 247),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/aviaocriartela.png',
+                        height: 150, // Aumentar a altura da imagem
                       ),
-                    ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Olá Piloto Fulano!',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 30),
-                SizedBox(
-                  height: 100,
-                  width: 600,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 69, 159, 227)),
-                    ),
-                    onPressed: () {
-                      //print('Alterar Informações do Cadastro');
-                    },
-                    child: const Text(
-                      'Alterar Informações do Cadastro',
-                      style: TextStyle(
-                          fontSize: 32,
-                          color: Color.fromARGB(255, 247, 247, 247)),
-                    ),
+              ),
+              Positioned(
+                top: 40, // Ajuste conforme necessário
+                left: 10,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back,
+                      color: Colors.black, size: 40),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            LoginTela(), // Verifique o nome da classe da tela de login
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          _buildButton(context, 'Cadastrar Trecho', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const tela_cadastro_trecho(),
+              ),
+            );
+          }),
+          _buildButton(context, 'Alterar Informações do Cadastro', () {
+            // Adicione a funcionalidade aqui, se necessário
+          }),
+          _buildButton(context, 'Cadastrar Aeroporto', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const tela_cadastro_aeroporto(),
+              ),
+            );
+          }),
+          _buildButton(context, 'Cadastrar Controle de VOO', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const tela_cadastro_controle_voo(),
+              ),
+            );
+          }),
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(
+                100, 0, 100, 0), // Ajustar a largura do botão menor
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Adicione a funcionalidade aqui, se necessário
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF003049),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                const SizedBox(height: 30),
-                SizedBox(
-                  height: 100,
-                  width: 600,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 69, 159, 227)),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const tela_cadastro_aeroporto())));
-                      //print('Cadastrar Aeroporto');
-                    },
-                    child: const Text(
-                      'Cadastrar Aeroporto',
-                      style: TextStyle(
-                          fontSize: 32,
-                          color: Color.fromARGB(255, 247, 247, 247)),
-                    ),
-                  ),
+                child: const Text(
+                  'INICIAR VIAGEM',
+                  style: TextStyle(color: Color(0xFF003049)),
                 ),
-                const SizedBox(height: 30),
-                SizedBox(
-                  height: 100,
-                  width: 600,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 69, 159, 227)),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const tela_cadastro_controle_voo())));
-                    },
-                    child: const Text(
-                      'Cadastrar controle de voo',
-                      style: TextStyle(
-                          fontSize: 32,
-                          color: Color.fromARGB(255, 247, 247, 247)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 1,
-                ),
-                const SizedBox(height: 1.0),
-                ElevatedButton(
-                    onPressed: () {}, child: const Text('Iniciar Viagem')),
-              ],
-            )),
-          ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildButton(
+      BuildContext context, String text, VoidCallback onPressed) {
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 30),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            textStyle: const TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF003049),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40),
+            ),
+          ),
+          child: Text(
+            text,
+            style: const TextStyle(color: Color(0xFF003049)),
+          ),
         ),
       ),
     );
