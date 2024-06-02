@@ -1,20 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:appaviao/pages/login.dart'; // Certifique-se de que o caminho está correto
-import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
-import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
-import 'package:appaviao/pages/tela_cadastro_trecho.dart';
-
-class Tela_Inicial extends StatefulWidget {
-  const Tela_Inicial({super.key});
-
-  @override
-  State<Tela_Inicial> createState() => _TelaInicialState();
-}
-=======
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
-import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
@@ -22,137 +10,10 @@ import 'barra_navegacao.dart';
 class tela_inicial extends StatelessWidget {
   const tela_inicial({super.key}); // Corrigindo a declaração do construtor
 
-class _TelaInicialState extends State<Tela_Inicial> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
-      backgroundColor: const Color(0xFF003049),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                child: Container(
-                  width: size.width,
-                  height: 290,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(100000),
-                      bottomRight: Radius.circular(100000),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/images/aviaocriartela.png',
-                        height: 150, // Aumentar a altura da imagem
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Olá Piloto Fulano!',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 40, // Ajuste conforme necessário
-                left: 10,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back,
-                      color: Colors.black, size: 40),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const LoginTela(), // Verifique o nome da classe da tela de login
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          buildButton(context, 'Cadastrar Trecho', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const tela_cadastro_trecho(),
-              ),
-            );
-          }),
-          buildButton(context, 'Alterar Informações do Cadastro', () {
-            // Adicione a funcionalidade aqui, se necessário
-          }),
-          buildButton(context, 'Cadastrar Aeroporto', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const tela_cadastro_aeroporto(),
-              ),
-            );
-          }),
-          buildButton(context, 'Cadastrar Controle de VOO', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const tela_cadastro_controle_voo(),
-              ),
-            );
-          }),
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(
-                100, 0, 100, 0), // Ajustar a largura do botão menor
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Adicione a funcionalidade aqui, se necessário
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF003049),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: const Text(
-                  'INICIAR VIAGEM',
-                  style: TextStyle(color: Color(0xFF003049)),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildButton(
-      BuildContext context, String text, VoidCallback onPressed) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 30),
-      child: SizedBox(
-        width: double.infinity,
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -212,41 +73,8 @@ class _TelaInicialState extends State<Tela_Inicial> {
                     const SizedBox(height: 100),
                     SizedBox(
                       height: 60,
-                      width: 900,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                        onPressed: () async {
-                          UsuarioDTO? usuario = await getUsuario();
-                          if (usuario != null) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Perfil(
-                                  usuario: usuario,
-                                ),
-                              ),
-                            );
-                          } else {
-                            showNoUserDialog(context);
-                          }
-                        },
-                        child: const Text(
-                          'Alterar Informações do Cadastro',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: 60,
-                      width: 900,
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -274,7 +102,35 @@ class _TelaInicialState extends State<Tela_Inicial> {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900,
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const TelaCadastro())));
+                        },
+                        child: const Text(
+                          'Alterar Informações do Cadastro',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 60,
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -294,7 +150,7 @@ class _TelaInicialState extends State<Tela_Inicial> {
                           'Cadastrar Aeroporto',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Colors.black,
+                            color: Colors.black, // Texto em preto
                           ),
                         ),
                       ),
@@ -302,7 +158,8 @@ class _TelaInicialState extends State<Tela_Inicial> {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900,
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -314,7 +171,7 @@ class _TelaInicialState extends State<Tela_Inicial> {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) =>
-                                    const tela_cadastro_controle_voo())),
+                                    const tela_lista_controlevoo())),
                           );
                         },
                         child: const Text(
@@ -328,7 +185,8 @@ class _TelaInicialState extends State<Tela_Inicial> {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900,
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -347,33 +205,8 @@ class _TelaInicialState extends State<Tela_Inicial> {
                           'Iniciar Viagem',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Color.fromARGB(255, 53, 80, 255),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: 60,
-                      width: 900,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => const LoginTela())),
-                          );
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                        child: const Text(
-                          'Sair',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.red,
+                            color: Color.fromARGB(
+                                255, 53, 80, 255), // Cor do texto
                           ),
                         ),
                       ),
@@ -383,31 +216,9 @@ class _TelaInicialState extends State<Tela_Inicial> {
               ),
             ),
           ),
-          const SizedBox(
-            width: 100,
-          ),
         ],
       ),
       bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            textStyle: const TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF003049),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40),
-            ),
-          ),
-          child: Text(
-            text,
-            style: const TextStyle(color: Color(0xFF003049)),
-          ),
-        ),
     );
   }
 }

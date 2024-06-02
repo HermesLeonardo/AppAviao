@@ -330,7 +330,7 @@ class PerfilState extends State<Perfil> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Tela_Inicial()));
+                                builder: (context) => const tela_inicial()));
                       },
                       child: const Text("Voltar"),
                     ),
