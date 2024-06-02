@@ -27,6 +27,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const tela_inicial());
+
+        home: const LoginTela());
+        home: const tela_cadastro_trecho());
   }
 }

@@ -1,21 +1,24 @@
-import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
 import 'package:appaviao/Custons/custom_tela_perfil/cutom_from_perfil.dart';
+import 'package:appaviao/pages/tela_inicial.dart';
 
 class Perfil extends StatefulWidget {
-  const Perfil({super.key});
+  final UsuarioDTO usuario;
+
+  const Perfil({Key? key, required this.usuario}) : super(key: key);
 
   @override
   PerfilState createState() => PerfilState();
 }
 
 class PerfilState extends State<Perfil> {
-  TextEditingController nomeController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController telefoneController = TextEditingController();
-  TextEditingController senhaController = TextEditingController();
-  TextEditingController modeloAeronaveController = TextEditingController();
-  TextEditingController codigoAeronaveController = TextEditingController();
+  late TextEditingController nomeController;
+  late TextEditingController emailController;
+  late TextEditingController telefoneController;
+  late TextEditingController senhaController;
+  late TextEditingController modeloAeronaveController;
+  late TextEditingController codigoAeronaveController;
 
   bool editandoNome = false;
   bool editandoEmail = false;
@@ -25,6 +28,21 @@ class PerfilState extends State<Perfil> {
   bool editandoCodigoAeronave = false;
 
   List<Map<String, String>> aeronaves = [];
+
+  @override
+  void initState() {
+    super.initState();
+    nomeController = TextEditingController(text: widget.usuario.nome);
+    emailController = TextEditingController(text: widget.usuario.email);
+    telefoneController = TextEditingController(text: widget.usuario.telefone);
+    senhaController = TextEditingController(text: widget.usuario.senha);
+    modeloAeronaveController = TextEditingController(text: widget.usuario.modeloAeronave);
+    codigoAeronaveController = TextEditingController(text: widget.usuario.codigoAeronave);
+    aeronaves.add({
+      'modelo': widget.usuario.modeloAeronave,
+      'codigo': widget.usuario.codigoAeronave,
+    });
+  }
 
   void adicionarNovaAeronave() {
     showDialog(
