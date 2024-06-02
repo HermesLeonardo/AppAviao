@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
 import 'package:appaviao/Custons/custom_tela_perfil/cutom_from_perfil.dart';
+import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
+import 'package:appaviao/conexao/conexao.dart';
 
 class Perfil extends StatefulWidget {
-  final UsuarioDTO usuario;
-
-  const Perfil({super.key, required this.usuario});
+  const Perfil({super.key});
 
   @override
-  PerfilState createState() => PerfilState();
+  _PerfilState createState() => _PerfilState();
 }
 
-class PerfilState extends State<Perfil> {
+class _PerfilState extends State<Perfil> {
   late TextEditingController nomeController;
   late TextEditingController emailController;
   late TextEditingController telefoneController;
@@ -32,18 +30,33 @@ class PerfilState extends State<Perfil> {
   @override
   void initState() {
     super.initState();
-    nomeController = TextEditingController(text: widget.usuario.nome);
-    emailController = TextEditingController(text: widget.usuario.email);
-    telefoneController = TextEditingController(text: widget.usuario.telefone);
-    senhaController = TextEditingController(text: widget.usuario.senha);
-    modeloAeronaveController =
-        TextEditingController(text: widget.usuario.modeloAeronave);
-    codigoAeronaveController =
-        TextEditingController(text: widget.usuario.codigoAeronave);
-    aeronaves.add({
-      'modelo': widget.usuario.modeloAeronave,
-      'codigo': widget.usuario.codigoAeronave,
-    });
+    nomeController = TextEditingController();
+    emailController = TextEditingController();
+    telefoneController = TextEditingController();
+    senhaController = TextEditingController();
+    modeloAeronaveController = TextEditingController();
+    codigoAeronaveController = TextEditingController();
+    getUsuarioFromDB();
+  }
+
+  void getUsuarioFromDB() async {
+    final usuario = await conexao.instance.getUsuario();
+    if (usuario != null) {
+      setState(() {
+        nomeController.text = usuario.nome;
+        emailController.text = usuario.email;
+        telefoneController.text = usuario.telefone;
+        senhaController.text = usuario.senha;
+        modeloAeronaveController.text = usuario.modeloAeronave;
+        codigoAeronaveController.text = usuario.codigoAeronave;
+        aeronaves.add({
+          'modelo': usuario.modeloAeronave,
+          'codigo': usuario.codigoAeronave,
+        });
+      });
+    } else {
+      print('Usuário não encontrado no banco de dados');
+    }
   }
 
   void adicionarNovaAeronave() {
@@ -113,60 +126,7 @@ class PerfilState extends State<Perfil> {
       aeronaves.removeAt(index);
     });
 
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Editar Aeronave'),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Modelo:'),
-                CustomfromPerfil(
-                  labelText: "Modelo",
-                  controller: modeloAeronaveController,
-                ),
-                const SizedBox(height: 10),
-                const Text('Código:'),
-                CustomfromPerfil(
-                  labelText: "Código",
-                  controller: codigoAeronaveController,
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancelar'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  final String novoModelo = modeloAeronaveController.text;
-                  final String novoCodigo = codigoAeronaveController.text;
-
-                  aeronaves.add({
-                    'modelo': novoModelo,
-                    'codigo': novoCodigo,
-                  });
-
-                  modeloAeronaveController.clear();
-                  codigoAeronaveController.clear();
-                  editandoModeloAeronave = false;
-                  editandoCodigoAeronave = false;
-                });
-                Navigator.of(context).pop();
-              },
-              child: const Text('Salvar'),
-            ),
-          ],
-        );
-      },
-    );
+    adicionarNovaAeronave();
   }
 
   void excluirAeronave(int index) {
@@ -175,183 +135,164 @@ class PerfilState extends State<Perfil> {
     });
   }
 
-  void salvarAlteracoes() {
-    setState(() {
-      widget.usuario.nome = nomeController.text;
-      widget.usuario.email = emailController.text;
-      widget.usuario.telefone = telefoneController.text;
-      widget.usuario.senha = senhaController.text;
-      widget.usuario.modeloAeronave = modeloAeronaveController.text;
-      widget.usuario.codigoAeronave = codigoAeronaveController.text;
-    });
+  void salvarAlteracoes() async {
+    final db = await conexao.instance.database;
 
-    // Aqui você pode adicionar a lógica para salvar as alterações no banco de dados, por exemplo:
-    // Chamada de função para atualizar o usuário no banco de dados
-    // updateUserInDatabase(widget.usuario);
-
-    setState(() {
-      editandoNome = false;
-      editandoEmail = false;
-      editandoTelefone = false;
-      editandoSenha = false;
-      editandoModeloAeronave = false;
-      editandoCodigoAeronave = false;
-    });
+    await db.update(
+      'usuarios',
+      {
+        'nome': nomeController.text,
+        'telefone': telefoneController.text,
+        'email': emailController.text,
+        'senha': senhaController.text,
+        'modeloAeronave': modeloAeronaveController.text,
+        'codigoAeronave': codigoAeronaveController.text,
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Perfil"),
-        backgroundColor: const Color.fromARGB(255, 69, 159, 227),
-      ),
-      body: Container(
-        color: const Color.fromARGB(255, 69, 159, 227),
-        child: Container(
-          color: const Color.fromARGB(255, 0, 53, 84),
-          padding: const EdgeInsets.symmetric(horizontal: 200),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Nome",
-                        controller: nomeController,
-                        readOnly: !editandoNome,
-                      ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      appBar: AppBar(title: const Text("Perfil"), backgroundColor: Colors.blue),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomfromPerfil(
+                      labelText: "Nome",
+                      controller: nomeController,
+                      readOnly: !editandoNome,
                     ),
-                    IconButton(
+                  ),
+                  IconButton(
                       onPressed: () {
                         setState(() {
                           editandoNome = !editandoNome;
                         });
                       },
                       icon: Icon(editandoNome ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: Colors.blue),
+                ],
+              ),
+              const SizedBox(height: 25),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomfromPerfil(
+                      labelText: "Email",
+                      controller: emailController,
+                      readOnly: !editandoEmail,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Email",
-                        controller: emailController,
-                        readOnly: !editandoEmail,
-                      ),
-                    ),
-                    IconButton(
+                  ),
+                  IconButton(
                       onPressed: () {
                         setState(() {
                           editandoEmail = !editandoEmail;
                         });
                       },
                       icon: Icon(editandoEmail ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: Colors.blue),
+                ],
+              ),
+              const SizedBox(height: 25),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomfromPerfil(
+                      labelText: "Telefone",
+                      controller: telefoneController,
+                      readOnly: !editandoTelefone,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Telefone",
-                        controller: telefoneController,
-                        readOnly: !editandoTelefone,
-                      ),
-                    ),
-                    IconButton(
+                  ),
+                  IconButton(
                       onPressed: () {
                         setState(() {
                           editandoTelefone = !editandoTelefone;
                         });
                       },
                       icon: Icon(editandoTelefone ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: Colors.blue),
+                ],
+              ),
+              const SizedBox(height: 25),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomfromPerfil(
+                      labelText: "Senha",
+                      controller: senhaController,
+                      obscureText: false,
+                      readOnly: !editandoSenha,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomfromPerfil(
-                        labelText: "Senha",
-                        controller: senhaController,
-                        obscureText: false,
-                        readOnly: !editandoSenha,
-                      ),
-                    ),
-                    IconButton(
+                  ),
+                  IconButton(
                       onPressed: () {
                         setState(() {
                           editandoSenha = !editandoSenha;
                         });
                       },
                       icon: Icon(editandoSenha ? Icons.check : Icons.edit),
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                const SizedBox(height: 25),
-                const SizedBox(height: 25),
-                ElevatedButton(
-                  onPressed: adicionarNovaAeronave,
-                  child: const Text("Adicionar Nova Aeronave"),
-                ),
-                const SizedBox(height: 25),
-                Column(
-                  children: List.generate(aeronaves.length, (index) {
-                    return Card(
-                      child: ListTile(
-                        title: Text('Modelo: ${aeronaves[index]['modelo']}'),
-                        subtitle: Text('Código: ${aeronaves[index]['codigo']}'),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit),
-                              onPressed: () => editarAeronave(index),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete),
-                              onPressed: () => excluirAeronave(index),
-                            ),
-                          ],
-                        ),
+                      color: Colors.blue),
+                ],
+              ),
+              const SizedBox(height: 25),
+              ElevatedButton(
+                onPressed: adicionarNovaAeronave,
+                child: const Text("Adicionar Nova Aeronave"),
+              ),
+              const SizedBox(height: 25),
+              const SizedBox(height: 25),
+              Column(
+                children: List.generate(aeronaves.length, (index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text('Modelo: ${aeronaves[index]['modelo']}'),
+                      subtitle: Text('Código: ${aeronaves[index]['codigo']}'),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => editarAeronave(index),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () => excluirAeronave(index),
+                          ),
+                        ],
                       ),
-                    );
-                  }),
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: salvarAlteracoes,
-                      child: const Text("Salvar Alterações"),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const tela_inicial()));
-                      },
-                      child: const Text("Voltar"),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  );
+                }),
+              ),
+              const SizedBox(height: 25),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: salvarAlteracoes,
+                    child: const Text("Salvar Alterações"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const tela_inicial(),
+                        ),
+                      );
+                    },
+                    child: const Text("Voltar"),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

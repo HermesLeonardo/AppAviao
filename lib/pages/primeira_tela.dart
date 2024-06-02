@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 class PrimeiraTela extends StatelessWidget {
@@ -24,7 +25,14 @@ class PrimeiraTela extends StatelessWidget {
             ),
             const Spacer(flex: 5),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => const tela_inicial()),
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding:

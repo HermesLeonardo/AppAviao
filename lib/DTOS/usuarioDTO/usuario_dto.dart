@@ -15,6 +15,7 @@ class UsuarioDTO {
     required this.codigoAeronave,
   });
 
+  // Converte um UsuarioDTO para um Map
   Map<String, dynamic> toMap() {
     return {
       'nome': nome,
@@ -24,5 +25,17 @@ class UsuarioDTO {
       'modeloAeronave': modeloAeronave,
       'codigoAeronave': codigoAeronave,
     };
+  }
+
+  // Cria um UsuarioDTO a partir de um Map
+  factory UsuarioDTO.fromMap(Map<String, dynamic> map) {
+    return UsuarioDTO(
+      nome: map['nome'],
+      telefone: map['telefone'],
+      email: map['email'],
+      senha: map['senha'],
+      modeloAeronave: map['modeloAeronave'],
+      codigoAeronave: map['codigoAeronave'],
+    );
   }
 }

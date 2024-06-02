@@ -115,7 +115,7 @@ class tela_inicial extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: ((context) =>
-                                      const TelaCadastro())));
+                                      const Perfil())));
                         },
                         child: const Text(
                           'Alterar Informações do Cadastro',
