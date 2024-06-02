@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:appaviao/DTOS/controleVooDTO/controleVoo_dto.dart';
 import 'package:appaviao/classes_dao/controleVoo_dao.dart';
 import 'package:flutter/material.dart';

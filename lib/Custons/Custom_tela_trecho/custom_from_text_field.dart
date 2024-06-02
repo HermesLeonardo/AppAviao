@@ -13,26 +13,30 @@ class custom_from_text_field extends StatelessWidget {
     this.validator,
     this.controller,
   });
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        border: const OutlineInputBorder(),
-        filled: true,
-        fillColor: Colors.lightBlue[50],
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue, width: 1.0),
-          borderRadius: BorderRadius.circular(20.0),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue, // Define a cor do contorno
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue, width: 2.0),
-          borderRadius: BorderRadius.circular(20.0),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors
+                .blue, // Define a cor do contorno quando o campo não está em foco
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors
+                .blue, // Define a cor do contorno quando o campo está em foco
+          ),
         ),
       ),
-      onSaved: onSaved,
       validator: validator,
     );
   }
