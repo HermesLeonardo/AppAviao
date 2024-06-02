@@ -71,10 +71,20 @@ class conexao {
   static const columnAlternativo1 = 'alternativo1';
   static const columnAlternativo2 = 'alternativo2';
 
-  //singleton
+  static const _sqlScriptUsuarios = '''
+  CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    telefone TEXT NOT NULL,
+    email TEXT NOT NULL,
+    senha TEXT NOT NULL,
+    modeloAeronave TEXT NOT NULL,
+    codigoAeronave TEXT NOT NULL
+  )''';
+
+  // Singleton
   conexao._privateConstuctor();
   static final conexao instance = conexao._privateConstuctor();
-  // tem somente uma referência ao banco de dados - com safenull
 
   static Database? _database;
 
@@ -83,17 +93,47 @@ class conexao {
   }
 
   Future<Database> initDB() async {
-    databaseFactory = databaseFactoryFfi; //FACTORY TA AQUI
-    // instancia o db na primeira vez que for acessado
+    databaseFactory = databaseFactoryFfi;
     return openDatabase(
       join(await getDatabasesPath(), _dbname),
       onCreate: (db, version) async {
         await db.execute(_sqlScriptaeroporto);
         await db.execute(_sqlScriptControle);
+        await db.execute(_sqlScriptUsuarios);
       },
       version: 1,
     );
   }
+
+  Future<void> inserirUsuario(Map<String, dynamic> usuario) async {
+    final db = await database;
+    await db.insert('usuarios', usuario);
+  }
+
+  Future<List<Map<String, dynamic>>> listarUsuarios() async {
+    final db = await database;
+    return db.query('usuarios');
+  }
+
+  Future<void> atualizarUsuario(Map<String, dynamic> usuario) async {
+    final db = await database;
+    await db.update(
+      'usuarios',
+      usuario,
+      where: 'id = ?',
+      whereArgs: [usuario['id']],
+    );
+  }
+
+  Future<void> deletarUsuario(int id) async {
+    final db = await database;
+    await db.delete(
+      'usuarios',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+}
   /*
   Future<Database> getDatabase() async {
     // instancia o db na primeira vez que for acessado
@@ -107,4 +147,3 @@ class conexao {
     );
   }
   */
-}

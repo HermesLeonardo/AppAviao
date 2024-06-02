@@ -3,6 +3,8 @@ import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 
 class LoginTela extends StatefulWidget {
+  const LoginTela({super.key});
+
   @override
   _LoginTelaState createState() => _LoginTelaState();
 }
@@ -29,7 +31,7 @@ class _LoginTelaState extends State<LoginTela> {
                   width: screenWidth,
                   height: screenHeight * 0.45, // Ajuste da altura do container
                   decoration: BoxDecoration(
-                    color: Color(0xFF003049),
+                    color: const Color(0xFF003049),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(screenWidth),
                       bottomRight: Radius.circular(screenWidth),
@@ -61,7 +63,7 @@ class _LoginTelaState extends State<LoginTela> {
                   style: TextStyle(
                     fontSize: screenHeight * 0.03,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF003049),
+                    color: const Color(0xFF003049),
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.03),
@@ -69,9 +71,10 @@ class _LoginTelaState extends State<LoginTela> {
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Color(0xFF003049)),
+                      prefixIcon:
+                          const Icon(Icons.person, color: Color(0xFF003049)),
                       filled: true,
-                      fillColor: Color(0xFFC7C7C7),
+                      fillColor: const Color(0xFFC7C7C7),
                       hintText: 'Usuário',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -92,9 +95,10 @@ class _LoginTelaState extends State<LoginTela> {
                   child: TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock, color: Color(0xFF003049)),
+                      prefixIcon:
+                          const Icon(Icons.lock, color: Color(0xFF003049)),
                       filled: true,
-                      fillColor: Color(0xFFC7C7C7),
+                      fillColor: const Color(0xFFC7C7C7),
                       hintText: 'Senha',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -122,7 +126,7 @@ class _LoginTelaState extends State<LoginTela> {
                           });
                         },
                       ),
-                      Text(
+                      const Text(
                         'Lembrar de mim',
                         style: TextStyle(color: Color(0xFF003049)),
                       ),
@@ -138,14 +142,14 @@ class _LoginTelaState extends State<LoginTela> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => tela_inicial(),
+                            builder: (context) => const tela_inicial(),
                           ),
                         );
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF003049),
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      backgroundColor: const Color(0xFF003049),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -169,9 +173,9 @@ class _LoginTelaState extends State<LoginTela> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const tela_criar_conta()));
+                              builder: (context) => const TelaCadastro()));
                     },
-                    child: Text.rich(
+                    child: const Text.rich(
                       TextSpan(
                         text: 'Não possui uma conta? ',
                         style: TextStyle(color: Color(0xFF003049)),
