@@ -77,7 +77,6 @@ class conexao {
   }
 
   Future<Database> initDB() async {
-    databaseFactory = databaseFactoryFfi;
     sqfliteFfiInit(); // Inicializa o ffi
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
     final path = join(await getDatabasesPath(), _dbname);
@@ -94,49 +93,7 @@ class conexao {
       version: 1, // Atualize a versão do banco de dados
     );
   }
-
-  Future<void> inserirUsuario(Map<String, dynamic> usuario) async {
-    final db = await database;
-    await db.insert('usuarios', usuario);
-  }
-
-  Future<List<Map<String, dynamic>>> listarUsuarios() async {
-    final db = await database;
-    return db.query('usuarios');
-  }
-
-  Future<void> atualizarUsuario(Map<String, dynamic> usuario) async {
-    final db = await database;
-    await db.update(
-      'usuarios',
-      usuario,
-      where: 'id = ?',
-      whereArgs: [usuario['id']],
-    );
-  }
-
-  Future<void> deletarUsuario(int id) async {
-    final db = await database;
-    await db.delete(
-      'usuarios',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
 }
-/*
-  Future<Database> getDatabase() async {
-    // instancia o db na primeira vez que for acessado
-    return openDatabase(
-      join(await getDatabasesPath(), _dbname),
-      onCreate: (db, version) async {
-        return db.execute(_sqlScriptaeroporto);
-        return db.execute(_sqlScriptcontrole);
-      },
-      version: 1,
-    );
-  }
-  */
 
 void main() {
   runApp(const MyApp());

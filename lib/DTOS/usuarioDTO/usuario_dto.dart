@@ -13,5 +13,6 @@ class UsuarioDTO {
     required this.senha,
     required this.modeloAeronave,
     required this.codigoAeronave,
+    
   });
 }

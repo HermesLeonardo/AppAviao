@@ -2,6 +2,7 @@ import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
 import 'package:appaviao/classes_dao/trecho_dao.dart';
 import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
 import 'package:appaviao/listagem_trecho/tela_editar_trecho.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
 import 'package:flutter/material.dart';
 
@@ -88,6 +89,7 @@ class _listagem_trechoState extends State<listagem_trecho> {
         },
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
     );
   }
 }

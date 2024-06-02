@@ -19,22 +19,26 @@ class _TelaCadastroState extends State<TelaCadastro> {
   TextEditingController modeloAeronaveController = TextEditingController();
   TextEditingController codigoAeronaveController = TextEditingController();
 
-  void cadastrar() {
-    UsuarioDTO usuarioDTO = UsuarioDTO(
-      nome: nomeController.text,
-      telefone: telefoneController.text,
-      email: emailController.text,
-      senha: senhaController.text,
-      modeloAeronave: modeloAeronaveController.text,
-      codigoAeronave: codigoAeronaveController.text,
-    );
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Perfil(usuario: usuarioDTO),
-      ),
-    );
+  void cadastrar() {
+    if (formKey.currentState!.validate()) {
+      UsuarioDTO usuarioDTO = UsuarioDTO(
+        nome: nomeController.text,
+        telefone: telefoneController.text,
+        email: emailController.text,
+        senha: senhaController.text,
+        modeloAeronave: modeloAeronaveController.text,
+        codigoAeronave: codigoAeronaveController.text,
+      );
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Perfil(usuario: usuarioDTO),
+        ),
+      );
+    }
   }
 
   @override
@@ -53,7 +57,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 const BorderRadius.vertical(bottom: Radius.circular(200)),
             child: Container(
               height: size.height * 0.4,
-              width: size.width * 1,
+              width: size.width,
               color: const Color.fromARGB(255, 0, 53, 84),
               child: Image.asset(
                 'assets/images/aviaosfundo.png',
@@ -64,6 +68,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
           SingleChildScrollView(
             padding: const EdgeInsets.all(27),
             child: Form(
+              key: formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -71,7 +76,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   const Text(
                     "CADASTRO",
                     style: TextStyle(
-                      color: Color.fromRGBO(33, 150, 243, 1),
+                      color: Colors.blue,
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                     ),
@@ -122,7 +127,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     ),
                     child: const Text('CADASTRAR'),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15), // Espaço entre os botões
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -132,7 +137,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 8, 134, 252),
+                      backgroundColor: Colors.blue,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50, vertical: 15),
                       textStyle: const TextStyle(
@@ -140,7 +145,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    child: const Text('JÁ TENHO UMA CONTA'),
+                    child: const Text('Já tem uma conta? Login'),
                   ),
                 ],
               ),
