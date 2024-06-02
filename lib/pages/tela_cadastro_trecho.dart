@@ -1,5 +1,3 @@
-//No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
-
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
 import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
@@ -17,32 +15,6 @@ class tela_cadastro_trecho extends StatefulWidget {
 }
 
 class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
-  /*  final _formKey = GlobalKey<FormState>();
-  final List<Map<String, String>> _formDatas = [];
-  final Map<String, String> _formData = {
-    'De': '',
-    'Para': '',
-    'Trecho': '',
-    'Proa': '',
-    'Dist.184MN': '',
-    'Corredor': '',
-    'Alt.Corredor': '',
-    'Frequencia': '',
-    'Frequencia.alter': '',
-  };
-
-  bool _showInformation = false;
-
-  void _salvarFormulario() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      setState(() {
-        _showInformation = true;
-      });
-      print(_formData);
-    }
-  } */
-
   final _formKey = GlobalKey<FormState>();
   final deController = TextEditingController();
   final paraController = TextEditingController();
@@ -67,34 +39,30 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
       frequenciaAlter_trecho: frequenciaAlterController.text,
     );
     trecho_dao().insertTrecho(trecho);
+    // Exibir o AlertDialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Sucesso"),
+          content: const Text("Trecho Salvo com sucesso!!!"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
-
-  // List<TrechoInfoWidget> trechoInfoWidgets = [];
-
-/*   void _addTrecho() {
-    setState(() {
-      trechoInfoWidgets.add(
-        TrechoInfoWidget(
-          de: _formData['De']!,
-          para: _formData['Para']!,
-          trecho: _formData['Trecho']!,
-          corredor: _formData['Corredor']!,
-          //altcorredor: _formData['altcorredor']!,
-          proa: _formData['Proa']!,
-          //Dist184MN: _formData['Dist184MN']!,
-          //frequencia: _formData['frequencia']!,
-          //frequenciaalter: _formData['frequenciaalter']!,
-          onEdit: () {},
-          onDelete: () {},
-        ),
-      );
-    });
-  } */
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, 
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -119,10 +87,9 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                     },
                   ),
                 ),
-
                 const SizedBox(
                   width: 10,
-                ), //espaço entre os campos
+                ),
                 Expanded(
                   child: custom_from_text_field(
                     labelText: 'Para',
@@ -262,8 +229,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
               },
               child: const Text("Adicionar Trecho"),
             ),
-
-            const SizedBox(height: 10), // Espaço entre os botões
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(

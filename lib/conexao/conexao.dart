@@ -142,6 +142,13 @@ class MyApp extends StatelessWidget {
               } catch (e) {
                 print("Erro ao acessar a tabela 'controleVoo': $e");
               }
+              try {
+                List<Map<String, dynamic>> result = await db.query('Usuarios');
+                print(
+                    "Tabela 'Usuarios' existe e contém ${result.length} registros.");
+              } catch (e) {
+                print("Erro ao acessar a tabela 'Usuarios': $e");
+              }
             },
             child: const Text("Iniciar Banco de Dados"),
           ),

@@ -6,7 +6,7 @@ import 'package:appaviao/pages/tela_inicial.dart';
 class Perfil extends StatefulWidget {
   final UsuarioDTO usuario;
 
-  const Perfil({Key? key, required this.usuario}) : super(key: key);
+  const Perfil({super.key, required this.usuario});
 
   @override
   PerfilState createState() => PerfilState();
@@ -36,8 +36,10 @@ class PerfilState extends State<Perfil> {
     emailController = TextEditingController(text: widget.usuario.email);
     telefoneController = TextEditingController(text: widget.usuario.telefone);
     senhaController = TextEditingController(text: widget.usuario.senha);
-    modeloAeronaveController = TextEditingController(text: widget.usuario.modeloAeronave);
-    codigoAeronaveController = TextEditingController(text: widget.usuario.codigoAeronave);
+    modeloAeronaveController =
+        TextEditingController(text: widget.usuario.modeloAeronave);
+    codigoAeronaveController =
+        TextEditingController(text: widget.usuario.codigoAeronave);
     aeronaves.add({
       'modelo': widget.usuario.modeloAeronave,
       'codigo': widget.usuario.codigoAeronave,

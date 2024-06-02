@@ -1,12 +1,55 @@
-import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
+import 'package:appaviao/classes_dao/usuario_dao.dart';
+import 'package:appaviao/entitites/usuario_entity.dart';
+import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
+import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
 
 class tela_inicial extends StatelessWidget {
-  const tela_inicial({super.key}); // Corrigindo a declaração do construtor
+  const tela_inicial({super.key});
+
+  Future<UsuarioDTO?> getUsuario() async {
+    UsuarioDAO usuarioDAO = UsuarioDAO();
+    List<Usuario> usuarios = await usuarioDAO.listarUsuarios();
+    if (usuarios.isNotEmpty) {
+      Usuario usuario = usuarios.first;
+      return UsuarioDTO(
+        nome: usuario.nome,
+        telefone: usuario.telefone,
+        email: usuario.email,
+        senha: usuario.senha,
+        modeloAeronave: usuario.modeloAeronave,
+        codigoAeronave: usuario.codigoAeronave,
+      );
+    } else {
+      return null;
+    }
+  }
+
+  void showNoUserDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Nenhum usuário encontrado"),
+          content: const Text("Por favor, cadastre um usuário primeiro."),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +114,41 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 100),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                        onPressed: () async {
+                          UsuarioDTO? usuario = await getUsuario();
+                          if (usuario != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Perfil(
+                                  usuario: usuario,
+                                ),
+                              ),
+                            );
+                          } else {
+                            showNoUserDialog(context);
+                          }
+                        },
+                        child: const Text(
+                          'Alterar Informações do Cadastro',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 60,
+                      width: 900,
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -100,31 +176,7 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Add functionality for 'Alterar Informações do Cadastro' button
-                        },
-                        child: const Text(
-                          'Alterar Informações do Cadastro',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -144,7 +196,7 @@ class tela_inicial extends StatelessWidget {
                           'Cadastrar Aeroporto',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Colors.black, // Texto em preto
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -152,8 +204,7 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -165,7 +216,7 @@ class tela_inicial extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) =>
-                                    const tela_lista_controlevoo())),
+                                    const tela_cadastro_controle_voo())),
                           );
                         },
                         child: const Text(
@@ -179,8 +230,7 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -199,8 +249,33 @@ class tela_inicial extends StatelessWidget {
                           'Iniciar Viagem',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Color.fromARGB(
-                                255, 53, 80, 255), // Cor do texto
+                            color: Color.fromARGB(255, 53, 80, 255),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 60,
+                      width: 900,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const LoginTela())),
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                        child: const Text(
+                          'Sair',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.red,
                           ),
                         ),
                       ),
@@ -209,6 +284,9 @@ class tela_inicial extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          const SizedBox(
+            width: 100,
           ),
         ],
       ),
