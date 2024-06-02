@@ -5,6 +5,8 @@ import 'package:appaviao/pages/perfil.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({super.key});
+class tela_criar_conta extends StatelessWidget {
+  const tela_criar_conta({super.key}); // Corrigindo a declaração da chave
 
   @override
   _TelaCadastroState createState() => _TelaCadastroState();
@@ -95,6 +97,45 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     CustomfromPerfil(
                       labelText: "Código da Aeronave",
                       controller: codigoAeronaveController,
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text("Cadastro"),
+        backgroundColor: const Color.fromARGB(255, 69, 159, 227),
+      ),
+      body: Stack(
+        children: [
+          ClipRRect(
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(200)),
+            child: Container(
+              height: size.height * 0.4,
+              width: size.width * 1,
+              color: const Color.fromARGB(255, 0, 53, 84),
+              child: Image.asset(
+                'assets/images/aviaosfundo.png',
+                fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(27),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 50),
+                  const SizedBox(
+                    height: 450,
+                  ), //espaço entre os campos
+                  const Text(
+                    "CADASTRO",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
@@ -110,6 +151,13 @@ class _TelaCadastroState extends State<TelaCadastro> {
                         ),
                       ),
                       child: const Text('CADASTRAR'),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginTela()),
+                        );
+                      },
                     ),
                   ],
                 ),

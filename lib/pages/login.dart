@@ -49,7 +49,7 @@ class _LoginTelaState extends State<LoginTela> {
                       Text(
                         'LOGIN',
                         style: TextStyle(
-                          fontSize: screenHeight * 0.05,
+                          fontSize: screenHeight * 0.04,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -149,6 +149,7 @@ class _LoginTelaState extends State<LoginTela> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF003049),
+                      backgroundColor: const Color.fromARGB(255, 3, 89, 135),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -174,6 +175,11 @@ class _LoginTelaState extends State<LoginTela> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => const TelaCadastro()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const tela_criar_conta(),
+                        ),
+                      );
                     },
                     child: const Text.rich(
                       TextSpan(

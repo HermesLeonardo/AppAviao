@@ -275,6 +275,8 @@ class PerfilState extends State<Perfil> {
                   ],
                 ),
                 const SizedBox(height: 25),
+                const SizedBox(height: 25),
+                const SizedBox(height: 25),
                 ElevatedButton(
                   onPressed: adicionarNovaAeronave,
                   child: const Text("Adicionar Nova Aeronave"),
