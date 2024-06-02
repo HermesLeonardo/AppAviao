@@ -9,14 +9,14 @@ class CustomFormCadastro extends StatelessWidget {
   final bool obscureText; // Adicionando a propriedade obscureText
 
   const CustomFormCadastro({
-    Key? key,
+    super.key,
     required this.labelText,
     this.onSaved,
     this.validator,
     this.controller,
     this.icon,
     this.obscureText = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
