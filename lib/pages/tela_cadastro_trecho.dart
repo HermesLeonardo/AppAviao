@@ -94,8 +94,10 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(211, 216, 216, 216),
+      resizeToAvoidBottomInset: false, 
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: const Text("Cadastro de Trecho"),
       ),
       body: Form(
@@ -270,29 +272,6 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                         builder: (context) => const listagem_trecho()));
               },
               child: const Text("Visualizar Trechos Cadastrados"),
-
-              /* if (trechoInfoWidgets.isNotEmpty)
-              SizedBox(
-                height: 500, // Defina uma altura adequada
-                child: ListView.builder(
-                  itemCount: trechoInfoWidgets.length,
-                  itemBuilder: (context, index) {
-                    return (trechoInfoWidgets[index]);
-                  },
-                ),
-              ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  _addTrecho(); // Adiciona o trecho à lista de widgets
-                }
-              },
-              child: const Text("Adicionar Trecho"),
-            ), */
             )
           ],
         ),
