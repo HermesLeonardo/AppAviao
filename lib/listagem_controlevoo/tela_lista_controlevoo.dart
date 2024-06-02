@@ -1,5 +1,6 @@
 import 'package:appaviao/DTOS/controleVooDTO/controleVoo_dto.dart';
 import 'package:appaviao/listagem_controlevoo/lista_controleVoo.dart';
+import 'package:appaviao/listagem_controlevoo/tela_editar_controleVoo.dart';
 import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,15 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
   }
 
   void _editControleVoo(controleVoo_dto controleVoo) {
-    //Navigator.push(context, MaterialPageRoute(builder: (context) => ),).then((_) {
-    setState(() {
-      listacontroleVooDTO = controleVoo_dao().selecionarControleVoo();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => EditarControleVoo(controleVoo: controleVoo)),
+    ).then((_) {
+      setState(() {
+        listacontroleVooDTO = controleVoo_dao().selecionarControleVoo();
+      });
     });
-    // })
   }
 
   @override
@@ -77,7 +82,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => const tela_lista_controlevoo()),
+                builder: (context) => const tela_cadastro_controle_voo()),
           );
         },
         child: const Icon(Icons.add),
