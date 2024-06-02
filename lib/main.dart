@@ -26,11 +26,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-<<<<<<< HEAD
 
         home: const LoginTela());
-=======
-        home: const TelaListagemGeral());
->>>>>>> 65c5a0b8aba3032af141f2fc1b8665f5286ee0df
   }
 }

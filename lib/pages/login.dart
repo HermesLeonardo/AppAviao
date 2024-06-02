@@ -149,11 +149,7 @@ class _LoginTelaState extends State<LoginTela> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-<<<<<<< HEAD
                       backgroundColor: const Color.fromARGB(255, 3, 89, 135),
-=======
-                      backgroundColor: const Color(0xFF003049),
->>>>>>> 65c5a0b8aba3032af141f2fc1b8665f5286ee0df
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),

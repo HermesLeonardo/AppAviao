@@ -1,3 +1,4 @@
+import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/listagem_trecho/listagem_trecho.dart';
 import 'package:appaviao/listagem_aeroporto/TesteListagem.dart';
@@ -12,7 +13,6 @@ class BarraNavegacao extends StatelessWidget {
     required this.currentIndex,
   });
 
-<<<<<<< HEAD
   void _onItemTapped(BuildContext context, int index) {
     if (index != currentIndex) {
       switch (index) {
@@ -47,8 +47,6 @@ class BarraNavegacao extends StatelessWidget {
     }
   }
 
-=======
->>>>>>> 65c5a0b8aba3032af141f2fc1b8665f5286ee0df
   @override
   Widget build(BuildContext context) {
     void onItemTapped(int index) {
