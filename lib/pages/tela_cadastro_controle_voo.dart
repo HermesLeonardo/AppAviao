@@ -41,7 +41,7 @@ class _tela_cadastro_controle_vooState
       controle: controleController.text,
       lat: latController.text,
       lag: lagController.text,
-      Long: longController.text,
+      long: longController.text,
       qmh_local: qmh_localController.text,
       qmh_destino: qmh_destinoController.text,
       radio: radioController.text,
