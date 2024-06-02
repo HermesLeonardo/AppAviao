@@ -1,5 +1,6 @@
 import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
+import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
@@ -70,7 +71,8 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 100),
                     SizedBox(
                       height: 60,
-                      width: 900, // Ajustando o tamanho para melhor visualização
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -81,7 +83,8 @@ class tela_inicial extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: ((context) => const tela_cadastro_trecho()),
+                              builder: ((context) =>
+                                  const tela_cadastro_trecho()),
                             ),
                           );
                         },
@@ -97,7 +100,8 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900, // Ajustando o tamanho para melhor visualização
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -119,7 +123,8 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900, // Ajustando o tamanho para melhor visualização
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -147,7 +152,8 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900, // Ajustando o tamanho para melhor visualização
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -165,16 +171,25 @@ class tela_inicial extends StatelessWidget {
                         child: const Text(
                           'Cadastrar controle de voo',
                           style: TextStyle(
-                              fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width: 900, // Ajustando o tamanho para melhor visualização
+                      width:
+                          900, // Ajustando o tamanho para melhor visualização
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) =>
+                                    const TelaListagemGeral())),
+                          );
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                             const Color.fromARGB(255, 255, 255, 255),
@@ -184,7 +199,8 @@ class tela_inicial extends StatelessWidget {
                           'Iniciar Viagem',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Color.fromARGB(255, 53, 80, 255), // Cor do texto
+                            color: Color.fromARGB(
+                                255, 53, 80, 255), // Cor do texto
                           ),
                         ),
                       ),

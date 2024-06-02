@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
+import 'package:appaviao/pages/tela_criar_conta.dart';
 
 class LoginTela extends StatefulWidget {
   const LoginTela({super.key});
@@ -149,7 +149,6 @@ class _LoginTelaState extends State<LoginTela> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF003049),
-                      backgroundColor: const Color.fromARGB(255, 3, 89, 135),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -172,12 +171,9 @@ class _LoginTelaState extends State<LoginTela> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const TelaCadastro()));
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const tela_criar_conta(),
+                          builder: (context) => const TelaCadastro(),
                         ),
                       );
                     },
