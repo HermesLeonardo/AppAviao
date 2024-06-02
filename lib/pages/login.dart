@@ -143,6 +143,7 @@ class _LoginTelaState extends State<LoginTela> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
+                            builder: (context) => Tela_Inicial(),
                             builder: (context) => const PrimeiraTela(),
                           ),
                         );
