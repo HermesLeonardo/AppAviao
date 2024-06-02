@@ -1,11 +1,13 @@
 //No uso de navegadores para rodar a aplicação, desmarcar esse import para debug
 
-
 import 'package:appaviao/Custons/Custom_tela_trecho/caixa_info_widget.dart';
 import 'package:appaviao/Custons/Custom_tela_trecho/custom_from_text_field.dart';
+import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
 import 'package:appaviao/classes_dao/trecho_dao.dart';
+import 'package:appaviao/listagem_trecho/listagem_trecho.dart';
 
 class tela_cadastro_trecho extends StatefulWidget {
   const tela_cadastro_trecho({super.key});
@@ -14,10 +16,8 @@ class tela_cadastro_trecho extends StatefulWidget {
   State<tela_cadastro_trecho> createState() => _tela_cadastro_trechoState();
 }
 
-
-
 class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
- /*  final _formKey = GlobalKey<FormState>();
+  /*  final _formKey = GlobalKey<FormState>();
   final List<Map<String, String>> _formDatas = [];
   final Map<String, String> _formData = {
     'De': '',
@@ -51,10 +51,10 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
   final distController = TextEditingController();
   final corredorController = TextEditingController();
   final altCorredorController = TextEditingController();
-  final frequenciaController = TextEditingController();,
+  final frequenciaController = TextEditingController();
   final frequenciaAlterController = TextEditingController();
 
-    void _inserirTrecho() {
+  void _inserirTrecho() {
     final trecho = trecho_dto(
       de_trecho: deController.text,
       para_trecho: paraController.text,
@@ -69,8 +69,7 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
     trecho_dao().insertTrecho(trecho);
   }
 
-
- // List<TrechoInfoWidget> trechoInfoWidgets = [];
+  // List<TrechoInfoWidget> trechoInfoWidgets = [];
 
 /*   void _addTrecho() {
     setState(() {
@@ -95,8 +94,10 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(211, 216, 216, 216),
+      resizeToAvoidBottomInset: false, 
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: const Text("Cadastro de Trecho"),
       ),
       body: Form(
@@ -252,32 +253,30 @@ class _tela_cadastro_trechoState extends State<tela_cadastro_trecho> {
                 ),
               ],
             ),
-            /* if (trechoInfoWidgets.isNotEmpty)
-              SizedBox(
-                height: 500, // Defina uma altura adequada
-                child: ListView.builder(
-                  itemCount: trechoInfoWidgets.length,
-                  itemBuilder: (context, index) {
-                    return (trechoInfoWidgets[index]);
-                  },
-                ),
-              ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  _addTrecho(); // Adiciona o trecho à lista de widgets
+                  _inserirTrecho();
                 }
               },
               child: const Text("Adicionar Trecho"),
-            ), */
-            
+            ),
+
+            const SizedBox(height: 10), // Espaço entre os botões
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const listagem_trecho()));
+              },
+              child: const Text("Visualizar Trechos Cadastrados"),
+            )
           ],
         ),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
     );
   }
 }
