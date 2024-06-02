@@ -81,9 +81,6 @@ class conexao {
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
     final path = join(await getDatabasesPath(), _dbname);
 
-    // Exclui o banco de dados existente
-    await deleteDatabase(path);
-
     return openDatabase(
       path,
       onCreate: (db, version) async {
