@@ -1,3 +1,4 @@
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/perfil.dart';

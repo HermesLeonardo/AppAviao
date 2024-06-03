@@ -41,7 +41,7 @@ class _tela_cadastro_controle_vooState
       controle: controleController.text,
       lat: latController.text,
       lag: lagController.text,
-      Long: longController.text,
+      long: longController.text,
       qmh_local: qmh_localController.text,
       qmh_destino: qmh_destinoController.text,
       radio: radioController.text,
@@ -404,52 +404,3 @@ class _tela_cadastro_controle_vooState
     );
   }
 }
-
-
-
-//Verificar a necessidade
-/*
-  void _salvarControledeVoo() {
-   if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-     setState(() {
-       _showInformation = true;
-     });
-       print(_formData);
-     }
-  }
-
- final Map<String, String> _formData = {
-    'Data-Viagem': '',
-    'aeronave': '',
-    'viagem': '',
-    'controle': '',
-    'lat': '',
-    'long': '',
-    'QNH local': '',
-    'QNH dest': '',
-    'radio': '',
-    'tranponder de emergencia': '',
-    'tranponder 1': '',
-    'elevaçao destino': '',
-    'elevaçao local': '',
-    'tempo voo esti': '',
-    'altitude obrigatorio': '',
-    'alternativo 1': '',
-    'alternativo 2': '',
-  };
-  
-  List<ControleVooInfoWidget> controleVooInforWidgets = [];
-
-  //Verificar se for necessário criar um addControleVoo
-  
-  void _addControleVoo() {
-    setState(() {
-      controleVooInforWidgets.add(
-        const ControleVooInfoWidget(
-          dataviagem: _formData['Data-Viagem']!,
-        ),
-      );
-    });
-  }
-  */

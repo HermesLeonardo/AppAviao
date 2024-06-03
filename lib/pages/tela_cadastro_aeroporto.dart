@@ -2,6 +2,7 @@ import 'package:appaviao/Custons/Custom_tela_aeroporto/custom_from_text_field_ae
 import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
 import 'package:appaviao/classes_dao/aeroporto_dao.dart';
 import 'package:appaviao/listagem_aeroporto/TesteListagem.dart';
+import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:flutter/material.dart';
 
 class tela_cadastro_aeroporto extends StatefulWidget {
@@ -35,6 +36,24 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
       patio_aero: patioController.text,
     );
     aeroporto_dao().insertAeroporto(aeroporto);
+    // Exibir o AlertDialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Sucesso"),
+          content: const Text("Aeroporto Salvo com sucesso!!!"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -187,6 +206,7 @@ class _tela_cadastro_aeroportoState extends State<tela_cadastro_aeroporto> {
           ],
         ),
       ),
+      bottomNavigationBar: const BarraNavegacao(currentIndex: 0),
     );
   }
 }
