@@ -23,7 +23,6 @@ class custom_from_text_field_controle_voo extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         border: const OutlineInputBorder(),
         filled: true,
         fillColor: const Color.fromARGB(255, 255, 255, 255),
