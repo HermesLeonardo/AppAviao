@@ -86,8 +86,7 @@ class tela_inicial extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: ((context) =>
-                                  const Perfil()),
+                              builder: ((context) => const Perfil()),
                             ),
                           );
                         },

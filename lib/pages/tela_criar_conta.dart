@@ -6,7 +6,7 @@ import 'package:appaviao/pages/login.dart';
 import 'package:appaviao/pages/perfil.dart';
 
 class TelaCadastro extends StatefulWidget {
-  const TelaCadastro({Key? key}) : super(key: key);
+  const TelaCadastro({super.key});
 
   @override
   _TelaCadastroState createState() => _TelaCadastroState();
@@ -39,7 +39,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Perfil(),
+            builder: (context) => const Perfil(),
           ),
         );
       } catch (e) {
