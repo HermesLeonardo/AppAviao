@@ -1,4 +1,3 @@
-import 'package:appaviao/pages/primeira_tela.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/pages/tela_inicial.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
@@ -13,6 +12,8 @@ class LoginTela extends StatefulWidget {
 class _LoginTelaState extends State<LoginTela> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _rememberMe = false;
+  final TextEditingController _usuarioController = TextEditingController();
+  final TextEditingController _senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class _LoginTelaState extends State<LoginTela> {
               children: <Widget>[
                 Container(
                   width: screenWidth,
-                  height: screenHeight * 0.45, // Ajuste da altura do container
+                  height: screenHeight * 0.45,
                   decoration: BoxDecoration(
                     color: const Color(0xFF003049),
                     borderRadius: BorderRadius.only(
@@ -43,8 +44,7 @@ class _LoginTelaState extends State<LoginTela> {
                     children: <Widget>[
                       Image.asset(
                         'assets/images/aviaosfundo.png',
-                        height:
-                            screenHeight * 0.3, // Aumentei o tamanho da imagem
+                        height: screenHeight * 0.3,
                       ),
                       SizedBox(height: screenHeight * 0.02),
                       Text(
@@ -71,6 +71,7 @@ class _LoginTelaState extends State<LoginTela> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: TextFormField(
+                    controller: _usuarioController,
                     decoration: InputDecoration(
                       prefixIcon:
                           const Icon(Icons.person, color: Color(0xFF003049)),
@@ -94,6 +95,7 @@ class _LoginTelaState extends State<LoginTela> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: TextFormField(
+                    controller: _senhaController,
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon:
@@ -139,13 +141,34 @@ class _LoginTelaState extends State<LoginTela> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const tela_inicial(),
-                          ),
-                        );
+                        if (_usuarioController.text == 'gollatam' &&
+                            _senhaController.text == 'b16') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const tela_inicial(),
+                            ),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Credenciais Incorretas'),
+                                content: const Text(
+                                    'Usuário ou senha incorretos. Por favor, tente novamente.'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       }
                     },
                     style: ElevatedButton.styleFrom(

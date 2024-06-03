@@ -175,7 +175,7 @@ class _EditarTrechoScreenState extends State<EditarTrechoScreen> {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue),
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(15.0),
       ),
       child: TextFormField(
         controller: controller,

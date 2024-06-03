@@ -76,7 +76,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         title: const Text('Listagem Controle Voo'),
-        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
+        backgroundColor: Colors.blue,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
