@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class custom_from_text_field_controle_voo extends StatelessWidget {
@@ -37,6 +38,39 @@ class custom_from_text_field_controle_voo extends StatelessWidget {
       ),
       onSaved: onSaved,
       validator: validator,
+      //inputFormatters: [DataViagemMask()],
+    );
+  }
+}
+
+class DataViagemMask extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (!RegExp(r'\d+').hasMatch(newValue.text)) {
+      return oldValue;
+    }
+
+    var data = newValue.text;
+    final characters = data.characters.toList();
+    var format = '';
+    for (var i = 0; i < characters.length; i++) {
+      if (i < 2) {
+        format += characters[i];
+      } else if (i == 2) {
+        format += '/';
+        format += characters[i];
+      } else if (i == 4) {
+        format += '/';
+        format += characters[i];
+      }
+    }
+
+    return newValue.copyWith(
+      text: format,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: format.length),
+      ),
     );
   }
 }
