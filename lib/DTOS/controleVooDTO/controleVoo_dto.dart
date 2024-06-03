@@ -9,7 +9,7 @@ class controleVoo_dto with controleVoo_validate {
   String controle;
   String lat;
   String lag;
-  String Long;
+  String long;
   String qmh_local;
   String qmh_destino;
   String radio;
@@ -29,7 +29,7 @@ class controleVoo_dto with controleVoo_validate {
     this.controle = '',
     this.lat = '',
     this.lag = '',
-    this.Long = '',
+    this.long = '',
     this.qmh_local = '',
     this.qmh_destino = '',
     this.radio = '',
@@ -51,7 +51,7 @@ class controleVoo_dto with controleVoo_validate {
       controle: controle,
       lat: lat,
       lag: lag,
-      long: Long,
+      long: long,
       qmh_local: qmh_local,
       qmh_destino: qmh_destino,
       radio: radio,
@@ -74,7 +74,7 @@ class controleVoo_dto with controleVoo_validate {
       controle: json['controle'] ?? '',
       lat: json['lat'] ?? '',
       lag: json['lag'] ?? '',
-      Long: json['Long'] ?? '',
+      long: json['long'] ?? '',
       qmh_local: json['qmh_local'] ?? '',
       qmh_destino: json['qmh_destino'] ?? '',
       radio: json['radio'] ?? '',
@@ -97,7 +97,7 @@ class controleVoo_dto with controleVoo_validate {
       'controle': controle,
       'lat': lat,
       'lag': lag,
-      'Long': Long,
+      'long': long,
       'qmh_local': qmh_local,
       'qmh_destino': qmh_destino,
       'radio': radio,
@@ -114,7 +114,7 @@ class controleVoo_dto with controleVoo_validate {
 
   @override
   String toString() {
-    return 'controleVoo_dto(idcontroleVoo: $idcontroleVoo, dataViagem: $dataViagem, contole: $controle, lat: $lat, lag: $lag, long: $Long, qmh_local: $qmh_local, qmh_destino: $qmh_destino, radio: $radio, transponder_1: $transponder_1, trnasponder_emergencia: $transponder_emergencia, elevacao_local: $elevacao_local, elevacao_destino: $elevacao_destino, altitude_obrigatorio: $altitude_obrigatorio, tempo_voo_estimado: $tempo_voo_estimado, alternativo_1: $alternativo_1, alternativo_2: $alternativo_2)';
+    return 'controleVoo_dto(idcontroleVoo: $idcontroleVoo, dataViagem: $dataViagem, contole: $controle, lat: $lat, lag: $lag, long: $long, qmh_local: $qmh_local, qmh_destino: $qmh_destino, radio: $radio, transponder_1: $transponder_1, trnasponder_emergencia: $transponder_emergencia, elevacao_local: $elevacao_local, elevacao_destino: $elevacao_destino, altitude_obrigatorio: $altitude_obrigatorio, tempo_voo_estimado: $tempo_voo_estimado, alternativo_1: $alternativo_1, alternativo_2: $alternativo_2)';
   }
 
   void validate() {
@@ -123,7 +123,7 @@ class controleVoo_dto with controleVoo_validate {
     controleValidate(controle);
     latValidate(lat);
     lagValidate(lag);
-    longValidat(Long);
+    longValidat(long);
     qmh_localValidate(qmh_local);
     qmh_destinoValidate(qmh_destino);
     radioValidate(radio);

@@ -1,5 +1,6 @@
 import 'package:appaviao/DTOS/controleVooDTO/controleVoo_dto.dart';
 import 'package:appaviao/classes_dao/controleVoo_dao.dart';
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -46,7 +47,7 @@ class _EditarControleVooState extends State<EditarControleVoo> {
         TextEditingController(text: widget.controleVoo.controle);
     _lagController = TextEditingController(text: widget.controleVoo.lag);
     _latController = TextEditingController(text: widget.controleVoo.lat);
-    _longController = TextEditingController(text: widget.controleVoo.Long);
+    _longController = TextEditingController(text: widget.controleVoo.long);
     _qmh_localController =
         TextEditingController(text: widget.controleVoo.qmh_local);
     _qmh_destinoController =
@@ -81,10 +82,11 @@ class _EditarControleVooState extends State<EditarControleVoo> {
       controleVoo_dto updateContoleVoo = controleVoo_dto(
         idcontroleVoo: widget.controleVoo.idcontroleVoo,
         nomeViagem: widget.controleVoo.nomeViagem,
+        dataViagem: widget.controleVoo.dataViagem,
         controle: widget.controleVoo.controle,
         lag: widget.controleVoo.lag,
         lat: widget.controleVoo.lat,
-        Long: widget.controleVoo.Long,
+        long: widget.controleVoo.long,
         qmh_local: widget.controleVoo.qmh_local,
         qmh_destino: widget.controleVoo.qmh_destino,
         radio: widget.controleVoo.radio,
@@ -129,13 +131,14 @@ class _EditarControleVooState extends State<EditarControleVoo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("TEste"),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        title: const Text("Edição"),
+        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
             key: _formKey,
+            child: SingleChildScrollView(
             child: Column(
               children: [
                 _buildTextFormField(
@@ -206,8 +209,43 @@ class _EditarControleVooState extends State<EditarControleVoo> {
                   controller: _transponder_emergenciaController,
                   labelText: "Transponder de Emergencia",
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _saveControleVoo,
+                      child: const Text("Salvar"),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: _toggleEditing,
+                      child: Text(_editing
+                          ? 'Bloquear Edição'
+                          : 'Desbloquear para Edição'),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const tela_lista_controlevoo()));
+                        },
+                        child: const Text("Volstar"))
+                  ],
+                )
               ],
-            )),
+            )
+          ),
+        ),
       ),
     );
   }

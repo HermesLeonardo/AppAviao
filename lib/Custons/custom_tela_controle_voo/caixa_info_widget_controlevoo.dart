@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class ControleVooInfoWidget extends StatelessWidget {
   final String dataviagem;
-  final String aeronave;
-  final String viagem;
+  final String nomeViagem;
   final String controle;
   final String lat;
   final String long;
@@ -22,8 +21,7 @@ class ControleVooInfoWidget extends StatelessWidget {
   const ControleVooInfoWidget({
     super.key,
     required this.dataviagem,
-    required this.aeronave,
-    required this.viagem,
+    required this.nomeViagem,
     required this.controle,
     required this.lat,
     required this.long,

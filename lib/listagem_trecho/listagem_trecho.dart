@@ -4,7 +4,9 @@ import 'package:appaviao/listagem_trecho/itensListaTrecho.dart';
 import 'package:appaviao/listagem_trecho/tela_editar_trecho.dart';
 import 'package:appaviao/pages/barra_navegacao.dart';
 import 'package:appaviao/pages/tela_cadastro_trecho.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class listagem_trecho extends StatefulWidget {
   const listagem_trecho({super.key});
@@ -49,7 +51,9 @@ class _listagem_trechoState extends State<listagem_trecho> {
         future: listartrechoDTO,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child:SingleChildScrollView(
+                child: CircularProgressIndicator()));
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -66,11 +70,12 @@ class _listagem_trechoState extends State<listagem_trecho> {
               ));
             }
 
-            return ListView.builder(
+            return Flexible(child:ListView.builder(
               itemCount: listaItensListaTrecho.length,
               itemBuilder: (BuildContext context, int index) {
                 return listaItensListaTrecho[index];
               },
+            )
             );
           }
         },

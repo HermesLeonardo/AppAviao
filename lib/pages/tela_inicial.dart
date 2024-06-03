@@ -2,6 +2,7 @@ import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
+import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
 import 'package:appaviao/pages/tela_criar_conta.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
@@ -86,12 +87,12 @@ class tela_inicial extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: ((context) =>
-                                  const tela_cadastro_trecho()),
+                                  const Perfil()),
                             ),
                           );
                         },
                         child: const Text(
-                          'Cadastrar Trecho',
+                          'Perfil',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -115,10 +116,10 @@ class tela_inicial extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: ((context) =>
-                                      const TelaCadastro())));
+                                      const tela_cadastro_trecho())));
                         },
                         child: const Text(
-                          'Alterar Informações do Cadastro',
+                          'Cadastrar Trecho',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -171,7 +172,7 @@ class tela_inicial extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) =>
-                                    const tela_lista_controlevoo())),
+                                    const tela_cadastro_controle_voo())),
                           );
                         },
                         child: const Text(

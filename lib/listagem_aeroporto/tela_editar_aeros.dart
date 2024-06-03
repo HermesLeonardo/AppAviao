@@ -2,6 +2,7 @@ import 'package:appaviao/listagem_aeroporto/TesteListagem.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/aeroportoDTO/aeroporto_dto.dart';
 import 'package:appaviao/classes_dao/aeroporto_dao.dart';
+import 'package:flutter/widgets.dart';
 
 class EditarAeroportoScreen extends StatefulWidget {
   final aeroporto_dto aeroporto;
@@ -90,7 +91,8 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: Column(
+          child:SingleChildScrollView(
+            child: Column(
             children: [
               _buildTextFormField(
                 controller: _nomeController,
@@ -155,6 +157,7 @@ class _EditarAeroportoScreenState extends State<EditarAeroportoScreen> {
           ),
         ),
       ),
+      )
     );
   }
 

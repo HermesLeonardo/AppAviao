@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
 
 class conexao {
   static const _dbname = "appaviao.db";
@@ -21,24 +22,24 @@ class conexao {
 
   static const _sqlScriptControle = '''
   CREATE TABLE IF NOT EXISTS controleVoo (
-    id_plano_voo INTEGER PRIMARY KEY AUTOINCREMENT,
+    idcontroleVoo INTEGER PRIMARY KEY AUTOINCREMENT,
     nomeViagem TEXT NOT NULL,
-    data_viagem TEXT NOT NULL,
+    dataviagem TEXT NOT NULL,
     controle TEXT NOT NULL,
     lat TEXT NOT NULL,
     lag TEXT NOT NULL,
     long TEXT NOT NULL,
-    qmh_local TEXT,
-    qmh_destino TEXT,
-    radio TEXT,
-    transponder1 TEXT NOT NULL,
+    qmh_local TEXT NOT NULL,
+    qmh_destino TEXT NOT NULL,
+    radio TEXT NOT NULL,
+    transponder_1 TEXT NOT NULL,
     transponder_emergencia TEXT NOT NULL,
     elevacao_local TEXT NOT NULL,
     elevacao_destino TEXT NOT NULL,
-    altitude_obrigatoria TEXT NOT NULL,
-    tempo_voo_estimado TEXT,
-    alternativo1 TEXT,
-    alternativo2 TEXT
+    altitude_obrigatorio TEXT NOT NULL,
+    tempo_voo_estimado TEXT NOT NULL,
+    alternativo_1 TEXT NOT NULL,
+    alternativo_2 TEXT NOT NULL
   )''';
 
   static const _sqlScriptTrecho = '''
@@ -67,8 +68,8 @@ class conexao {
   )''';
 
   // Singleton
-  conexao._privateConstuctor();
-  static final conexao instance = conexao._privateConstuctor();
+  conexao._privateConstructor();
+  static final conexao instance = conexao._privateConstructor();
 
   static Database? _database;
 
@@ -80,7 +81,7 @@ class conexao {
     sqfliteFfiInit(); // Inicializa o ffi
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
     final path = join(await getDatabasesPath(), _dbname);
-
+    //await deleteDatabase(path);
     return openDatabase(
       path,
       onCreate: (db, version) async {
@@ -92,6 +93,16 @@ class conexao {
       },
       version: 1, // Atualize a versão do banco de dados
     );
+  }
+
+  Future<UsuarioDTO?> getUsuario() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('usuarios');
+    if (maps.isNotEmpty) {
+      return UsuarioDTO.fromMap(maps.first);
+    } else {
+      return null;
+    }
   }
 }
 
