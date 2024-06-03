@@ -43,6 +43,7 @@ class custom_from_text_field_controle_voo extends StatelessWidget {
   }
 }
 
+/*
 class DataViagemMask extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
@@ -74,3 +75,4 @@ class DataViagemMask extends TextInputFormatter {
     );
   }
 }
+*/

@@ -51,7 +51,7 @@ class _tela_lista_controlevooState extends State<tela_lista_controlevoo> {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData) {
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('Sem Controle de Voo'));
           } else {
             List<Lista_controleVoo> listaItenscontroleVoo = [];

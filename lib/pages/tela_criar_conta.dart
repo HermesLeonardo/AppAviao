@@ -1,4 +1,5 @@
 import 'package:appaviao/entitites/usuario_entity.dart';
+import 'package:appaviao/pages/primeira_tela.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
 import 'package:appaviao/conexao/conexao.dart';
@@ -45,7 +46,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const Perfil(),
+          builder: (context) => const PrimeiraTela(),
         ),
       );
     }

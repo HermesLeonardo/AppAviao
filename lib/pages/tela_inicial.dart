@@ -1,4 +1,3 @@
-import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:appaviao/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
@@ -175,7 +174,7 @@ class tela_inicial extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) =>
-                                    const tela_lista_controlevoo())),
+                                    const tela_cadastro_controle_voo())),
                           );
                         },
                         child: const Text(
