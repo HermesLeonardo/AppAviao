@@ -1,6 +1,9 @@
 import 'package:appaviao/Custons/custom_tela_cadastro/custom_form_cadastro.dart';
-import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/conexao/conexao.dart';
 import 'package:flutter/material.dart';
+import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
+import 'package:appaviao/pages/login.dart';
+import 'package:appaviao/pages/perfil.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({super.key});
