@@ -6,8 +6,8 @@ class adapter_controleVoo {
   static controleVooEntity fromJson(Map<String, dynamic> json) {
     return controleVooEntity(
       idcontroleVoo: json['idcontroleVoo'] ?? '',
-      dataViagem: json['dataviagem'] ?? '',
       nomeViagem: json['nomeViagem'] ?? '',
+      dataViagem: json['dataviagem'] ?? '',
       controle: json['controle'] ?? '',
       lat: json['lat'] ?? '',
       lag: json['lag'] ?? '',
@@ -29,8 +29,8 @@ class adapter_controleVoo {
   static Map<String, dynamic> toJson(controleVooEntity model) {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['idcontroleVoo'] = model.idcontroleVoo;
-    data['dataViagem'] = model.dataViagem;
     data['nomeViagem'] = model.nomeViagem;
+    data['dataViagem'] = model.dataViagem;
     data['controle'] = model.controle;
     data['lat'] = model.lat;
     data['lag'] = model.lag;

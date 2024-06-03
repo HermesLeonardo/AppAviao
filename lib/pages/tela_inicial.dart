@@ -1,12 +1,11 @@
-import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
+
+import 'package:flutter/material.dart';
+import 'tela_cadastro_trecho.dart';
+import 'barra_navegacao.dart';
 import 'package:appaviao/pages/perfil.dart';
 import 'package:appaviao/pages/tela_cadastro_aeroporto.dart';
 import 'package:appaviao/listagem_geral/tela_listagem_geral.dart';
 import 'package:appaviao/pages/tela_cadastro_controle_voo.dart';
-import 'package:appaviao/pages/tela_criar_conta.dart';
-import 'package:flutter/material.dart';
-import 'tela_cadastro_trecho.dart';
-import 'barra_navegacao.dart';
 
 class tela_inicial extends StatelessWidget {
   const tela_inicial({super.key}); // Corrigindo a declaração do construtor
@@ -158,8 +157,7 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -207,6 +205,32 @@ class tela_inicial extends StatelessWidget {
                             fontSize: 20,
                             color: Color.fromARGB(
                                 255, 53, 80, 255), // Cor do texto
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 60,
+                      width: 900,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const LoginTela())),
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.red, // Cor vermelha
+                          ),
+                        ),
+                        child: const Text(
+                          'Sair',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
                           ),
                         ),
                       ),
