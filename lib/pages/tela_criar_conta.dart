@@ -21,7 +21,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   void cadastrar() async {
     if (formKey.currentState!.validate()) {
-      // Seus códigos de cadastro aqui
+
     }
   }
 

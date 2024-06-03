@@ -1,4 +1,4 @@
-import 'package:appaviao/pages/login.dart';
+
 import 'package:flutter/material.dart';
 import 'tela_cadastro_trecho.dart';
 import 'barra_navegacao.dart';
@@ -85,6 +85,7 @@ class tela_inicial extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
+
                               builder: ((context) => const Perfil()),
                             ),
                           );
