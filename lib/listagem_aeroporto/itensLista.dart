@@ -23,7 +23,7 @@ class ItensLista extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: ListTile(
-        title: Text("Nome: $nome"),
+        title: Text("Nome: $nome" "nome2"),
         subtitle: Text("Código: $codigo"),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

@@ -86,8 +86,7 @@ class tela_inicial extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: ((context) =>
-                                  const Perfil()),
+                              builder: ((context) => const Perfil()),
                             ),
                           );
                         },
@@ -159,8 +158,7 @@ class tela_inicial extends StatelessWidget {
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 60,
-                      width:
-                          900, // Ajustando o tamanho para melhor visualização
+                      width: 900,
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
