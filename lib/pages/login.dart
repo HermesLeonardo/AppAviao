@@ -141,8 +141,8 @@ class _LoginTelaState extends State<LoginTela> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        if (_usuarioController.text == 'gollatam' &&
-                            _senhaController.text == 'b16') {
+                        if (_usuarioController.text == 'admin' &&
+                            _senhaController.text == '123456') {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
