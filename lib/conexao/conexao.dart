@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:appaviao/DTOS/usuarioDTO/usuario_dto.dart';
 
 class conexao {
   static const _dbname = "appaviao.db";
@@ -67,8 +68,8 @@ class conexao {
   )''';
 
   // Singleton
-  conexao._privateConstuctor();
-  static final conexao instance = conexao._privateConstuctor();
+  conexao._privateConstructor();
+  static final conexao instance = conexao._privateConstructor();
 
   static Database? _database;
 
@@ -80,7 +81,7 @@ class conexao {
     sqfliteFfiInit(); // Inicializa o ffi
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
     final path = join(await getDatabasesPath(), _dbname);
-    await deleteDatabase(path);
+    //await deleteDatabase(path);
     return openDatabase(
       path,
       onCreate: (db, version) async {
@@ -92,6 +93,16 @@ class conexao {
       },
       version: 1, // Atualize a versão do banco de dados
     );
+  }
+
+  Future<UsuarioDTO?> getUsuario() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('usuarios');
+    if (maps.isNotEmpty) {
+      return UsuarioDTO.fromMap(maps.first);
+    } else {
+      return null;
+    }
   }
 }
 

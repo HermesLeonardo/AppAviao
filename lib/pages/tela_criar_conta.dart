@@ -39,7 +39,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Perfil(usuario: usuarioDTO),
+            builder: (context) => Perfil(),
           ),
         );
       } catch (e) {
