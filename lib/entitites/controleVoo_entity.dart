@@ -1,7 +1,7 @@
 class controleVooEntity {
   final int idcontroleVoo;
-  final String dataViagem;
   final String nomeViagem;
+  final String dataViagem;
   final String controle;
   final String lat;
   final String lag;
@@ -20,8 +20,8 @@ class controleVooEntity {
 
   controleVooEntity({
     required this.idcontroleVoo,
-    required this.dataViagem,
     required this.nomeViagem,
+    required this.dataViagem,
     required this.controle,
     required this.lat,
     required this.lag,

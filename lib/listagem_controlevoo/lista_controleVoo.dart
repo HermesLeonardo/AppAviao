@@ -18,13 +18,15 @@ class Lista_controleVoo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromARGB(255, 39, 179, 255)),
-        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.blue,
+        ),
+        borderRadius: BorderRadius.circular(20),
       ),
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: ListTile(
-        title: Text(nomeViagem),
-        subtitle: Text(dataViagem),
+        title: Text('Nome: $nomeViagem'),
+        subtitle: Text('Data: $dataViagem'),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

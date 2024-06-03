@@ -23,7 +23,7 @@ class conexao {
   CREATE TABLE IF NOT EXISTS controleVoo (
     idcontroleVoo INTEGER PRIMARY KEY AUTOINCREMENT,
     nomeViagem TEXT NOT NULL,
-    dataviagem TEXT NOT NULL,
+    dataViagem TEXT NOT NULL,
     controle TEXT NOT NULL,
     lat TEXT NOT NULL,
     lag TEXT NOT NULL,
@@ -80,7 +80,7 @@ class conexao {
     sqfliteFfiInit(); // Inicializa o ffi
     databaseFactory = databaseFactoryFfi; // Define a fábrica para o FFI
     final path = join(await getDatabasesPath(), _dbname);
-    await deleteDatabase(path);
+    //await deleteDatabase(path);
     return openDatabase(
       path,
       onCreate: (db, version) async {

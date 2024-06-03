@@ -79,28 +79,28 @@ class _EditarControleVooState extends State<EditarControleVoo> {
 
   void _saveControleVoo() async {
     if (_formKey.currentState!.validate()) {
-      controleVoo_dto updateContoleVoo = controleVoo_dto(
+      controleVoo_dto updatedContoleVoo = controleVoo_dto(
         idcontroleVoo: widget.controleVoo.idcontroleVoo,
-        nomeViagem: widget.controleVoo.nomeViagem,
-        dataViagem: widget.controleVoo.dataViagem,
-        controle: widget.controleVoo.controle,
-        lag: widget.controleVoo.lag,
-        lat: widget.controleVoo.lat,
-        long: widget.controleVoo.long,
-        qmh_local: widget.controleVoo.qmh_local,
-        qmh_destino: widget.controleVoo.qmh_destino,
-        radio: widget.controleVoo.radio,
-        alternativo_1: widget.controleVoo.alternativo_1,
-        alternativo_2: widget.controleVoo.alternativo_2,
-        altitude_obrigatorio: widget.controleVoo.altitude_obrigatorio,
-        elevacao_local: widget.controleVoo.elevacao_local,
-        elevacao_destino: widget.controleVoo.elevacao_destino,
-        tempo_voo_estimado: widget.controleVoo.tempo_voo_estimado,
-        transponder_1: widget.controleVoo.transponder_1,
-        transponder_emergencia: widget.controleVoo.transponder_emergencia,
+        nomeViagem: _nomeViagemController.text,
+        dataViagem: _dataViagemController.text,
+        controle: _controleContrller.text,
+        lag: _lagController.text,
+        lat: _latController.text,
+        long: _longController.text,
+        qmh_local: _qmh_localController.text,
+        qmh_destino: _qmh_destinoController.text,
+        radio: _radioController.text,
+        alternativo_1: _alternativo_1Controller.text,
+        alternativo_2: _alternativo_2Controller.text,
+        altitude_obrigatorio: _altitude_obrigatorioController.text,
+        elevacao_local: _elevacao_localController.text,
+        elevacao_destino: _elevacao_destinoController.text,
+        tempo_voo_estimado: _tempo_voo_estimadoController.text,
+        transponder_1: _transponder_1Controller.text,
+        transponder_emergencia: _transponder_emergenciaController.text,
       );
 
-      await controleVoo_dao().updateControleVoo(updateContoleVoo);
+      await controleVoo_dao().updateControleVoo(updatedContoleVoo);
       Navigator.pop(context);
     }
   }
@@ -131,8 +131,8 @@ class _EditarControleVooState extends State<EditarControleVoo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edição"),
-        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
+        title: const Text("Visualizar Controle de Voo cadastrado"),
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -219,7 +219,7 @@ class _EditarControleVooState extends State<EditarControleVoo> {
                       child: const Text("Salvar"),
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
                     ElevatedButton(
                       onPressed: _toggleEditing,
@@ -238,7 +238,7 @@ class _EditarControleVooState extends State<EditarControleVoo> {
                                   builder: (context) =>
                                       const tela_lista_controlevoo()));
                         },
-                        child: const Text("Volstar"))
+                        child: const Text("Voltar"))
                   ],
                 )
               ],
@@ -252,8 +252,10 @@ class _EditarControleVooState extends State<EditarControleVoo> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromARGB(255, 247, 6, 6)),
-        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.blue,
+        ),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: controller,
