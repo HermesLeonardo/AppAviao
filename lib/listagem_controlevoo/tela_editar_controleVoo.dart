@@ -1,5 +1,6 @@
 import 'package:appaviao/DTOS/controleVooDTO/controleVoo_dto.dart';
 import 'package:appaviao/classes_dao/controleVoo_dao.dart';
+import 'package:appaviao/listagem_controlevoo/tela_lista_controlevoo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -207,6 +208,39 @@ class _EditarControleVooState extends State<EditarControleVoo> {
                   controller: _transponder_emergenciaController,
                   labelText: "Transponder de Emergencia",
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _saveControleVoo,
+                      child: const Text("Salvar"),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: _toggleEditing,
+                      child: Text(_editing
+                          ? 'Bloquear Edição'
+                          : 'Desbloquear para Edição'),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const tela_lista_controlevoo()));
+                        },
+                        child: const Text("Volstar"))
+                  ],
+                )
               ],
             )),
       ),
