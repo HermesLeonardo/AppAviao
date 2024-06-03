@@ -19,12 +19,12 @@ class ItensLista extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(20.0),
       ),
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: ListTile(
-        title: Text(nome),
-        subtitle: Text(codigo),
+        title: Text("Nome: $nome" "nome2"),
+        subtitle: Text("Código: $codigo"),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

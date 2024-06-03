@@ -39,10 +39,10 @@ class _TelaListagemGeralState extends State<TelaListagemGeral> {
               children: [
                 if (item is aeroporto_dto)
                   Text(
-                      'Nome: ${item.nome_aero}\nCódigo: ${item.codigo_aero}\nTWR: ${item.twr_aero}\nSolo: ${item.solo_aero}\nCabeceira: ${item.cabeceira_aero}\nFIR: ${item.fir_aero}\nMetragem Pista: ${item.metragem_pista}\nPatio ${item.patio_aero}'),
+                      'Nome: ${item.nome_aero}\nCódigo: ${item.codigo_aero}\nTWR: ${item.twr_aero}\nSolo: ${item.solo_aero}\nCabeceira: ${item.cabeceira_aero}\nFIR: ${item.fir_aero}\nMetragem Pista: ${item.metragem_pista}\nPatio: ${item.patio_aero}'),
                 if (item is trecho_dto)
                   Text(
-                      'Nome: ${item.trecho_trecho}\nDe: ${item.de_trecho}\nPara: ${item.para_trecho}\nProa: ${item.proa_trecho}\nDist: ${item.dist_trecho}\nCorredor: ${item.corredor_trecho}\nAltura Corredor ${item.altCorredor_trecho}\nFrequencia ${item.frequencia_trecho}\nFrequencia Alter ${item.frequenciaAlter_trecho} '),
+                      'Nome: ${item.trecho_trecho}\nDe: ${item.de_trecho}\nPara: ${item.para_trecho}\nProa: ${item.proa_trecho}\nDist: ${item.dist_trecho}\nCorredor: ${item.corredor_trecho}\nAltura Corredor: ${item.altCorredor_trecho}\nFrequencia: ${item.frequencia_trecho}\nFrequencia Alter: ${item.frequenciaAlter_trecho} '),
                 if (item is controleVoo_dto)
                   Text(
                       'Data Viagem: ${item.dataViagem}\nNome da Viagem: ${item.nomeViagem}\nControle: ${item.controle}\nLat: ${item.lat}\nLat: ${item.lat}\nLong: ${item.lag}\nQMH Local: ${item.qmh_local}\nQMH Destino: ${item.qmh_destino}\nRadio: ${item.radio}\nTransponder 1: ${item.transponder_1}\nTransponder Emergência: ${item.transponder_emergencia}\nElevação Local: ${item.elevacao_local}\nElevação Destino: ${item.elevacao_destino}\nAltitude Obrigatório: ${item.altitude_obrigatorio}\nTempo Voo Estimado: ${item.tempo_voo_estimado}\nAlternativo 1: ${item.alternativo_1}\nAlternativo 2: ${item.alternativo_2}'),

@@ -24,7 +24,7 @@ class conexao {
   CREATE TABLE IF NOT EXISTS controleVoo (
     idcontroleVoo INTEGER PRIMARY KEY AUTOINCREMENT,
     nomeViagem TEXT NOT NULL,
-    dataviagem TEXT NOT NULL,
+    dataViagem TEXT NOT NULL,
     controle TEXT NOT NULL,
     lat TEXT NOT NULL,
     lag TEXT NOT NULL,

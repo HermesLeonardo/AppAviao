@@ -28,7 +28,7 @@ class CustomFormCadastro extends StatelessWidget {
         prefixIcon: icon,
         border: const OutlineInputBorder(),
         filled: true,
-        fillColor: Colors.lightBlue[50],
+        fillColor: const Color.fromARGB(255, 255, 255, 255),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blue, width: 1.0),
           borderRadius: BorderRadius.circular(20.0),
