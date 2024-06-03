@@ -2,6 +2,7 @@ import 'package:appaviao/listagem_trecho/listagem_trecho.dart';
 import 'package:flutter/material.dart';
 import 'package:appaviao/DTOS/trechoDTO/trecho_dto.dart';
 import 'package:appaviao/classes_dao/trecho_dao.dart';
+import 'package:flutter/widgets.dart';
 
 class EditarTrechoScreen extends StatefulWidget {
   final trecho_dto trecho;
@@ -94,6 +95,7 @@ class _EditarTrechoScreenState extends State<EditarTrechoScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
+          child:SingleChildScrollView(
           child: Column(
             children: [
               _buildTextFormField(
@@ -163,6 +165,7 @@ class _EditarTrechoScreenState extends State<EditarTrechoScreen> {
           ),
         ),
       ),
+      )
     );
   }
 
