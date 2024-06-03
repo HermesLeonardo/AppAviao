@@ -21,7 +21,18 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   void cadastrar() async {
     if (formKey.currentState!.validate()) {
-
+      try {
+        final db = await conexao.instance.database;
+        await db.insert('usuarios', usuarioDTO.toMap());
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Perfil(),
+          ),
+        );
+      } catch (e) {
+        print("Erro ao cadastrar usuário: $e");
+      }
     }
   }
 
