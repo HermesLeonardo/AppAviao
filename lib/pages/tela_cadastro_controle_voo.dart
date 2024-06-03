@@ -17,7 +17,7 @@ class _tela_cadastro_controle_vooState
     extends State<tela_cadastro_controle_voo> {
   final _formKey = GlobalKey<FormState>();
   final dataViagemController = TextEditingController();
-  final nomeViagemContrelloer = TextEditingController();
+  final nomeViagemContreller = TextEditingController();
   final controleController = TextEditingController();
   final latController = TextEditingController();
   final lagController = TextEditingController();
@@ -37,7 +37,7 @@ class _tela_cadastro_controle_vooState
   void _inserirControlevoo() {
     final controlevoo = controleVoo_dto(
       dataViagem: dataViagemController.text,
-      nomeViagem: nomeViagemContrelloer.text,
+      nomeViagem: nomeViagemContreller.text,
       controle: controleController.text,
       lat: latController.text,
       lag: lagController.text,
@@ -64,11 +64,8 @@ class _tela_cadastro_controle_vooState
       appBar: AppBar(
         title: const Text(
           "Controle de Voo",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 39, 179, 255),
+        backgroundColor: Colors.blue,
       ),
       body: Form(
         key: _formKey,
@@ -102,7 +99,7 @@ class _tela_cadastro_controle_vooState
                 Expanded(
                   child: custom_from_text_field_controle_voo(
                     labelText: "Nome da Viagem",
-                    controller: nomeViagemContrelloer,
+                    controller: nomeViagemContreller,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira a viagem';
@@ -218,11 +215,11 @@ class _tela_cadastro_controle_vooState
               children: <Widget>[
                 Expanded(
                   child: custom_from_text_field_controle_voo(
-                    labelText: "Transponder de Emergência",
-                    controller: transponder_emergenciaController,
+                    labelText: "Radio",
+                    controller: radioController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira o Transponder de Emergência';
+                        return 'Por favor, insira o Radio';
                       }
                       return null;
                     },
@@ -238,6 +235,21 @@ class _tela_cadastro_controle_vooState
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, insira o Tranponder 1';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Expanded(
+                  child: custom_from_text_field_controle_voo(
+                    labelText: "Transponder de Emergência",
+                    controller: transponder_emergenciaController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Transponder de Emergência';
                       }
                       return null;
                     },

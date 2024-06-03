@@ -19,6 +19,7 @@ class controleVoo_dao {
       return controleVoo_dto(
         idcontroleVoo: maps[i]['idcontroleVoo'],
         nomeViagem: maps[i]['nomeViagem'],
+        dataViagem: maps[i]['dataViagem'],
         controle: maps[i]['controle'],
         lat: maps[i]['lat'],
         lag: maps[i]['lag'],
