@@ -76,11 +76,11 @@ class _tela_cadastro_controle_vooState
               children: <Widget>[
                 Expanded(
                   child: custom_from_text_field_controle_voo(
-                    labelText: "Data da Viagem",
-                    controller: dataViagemController,
+                    labelText: "Nome da Viagem",
+                    controller: nomeViagemContreller,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira a data da viagem';
+                        return 'Por favor, insira a viagem';
                       }
                       return null;
                     },
@@ -98,11 +98,11 @@ class _tela_cadastro_controle_vooState
               children: <Widget>[
                 Expanded(
                   child: custom_from_text_field_controle_voo(
-                    labelText: "Nome da Viagem",
-                    controller: nomeViagemContreller,
+                    labelText: "Data da Viagem",
+                    controller: dataViagemController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor, insira a viagem';
+                        return 'Por favor, insira a data da viagem';
                       }
                       return null;
                     },
