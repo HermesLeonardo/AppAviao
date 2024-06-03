@@ -137,6 +137,7 @@ class _EditarControleVooState extends State<EditarControleVoo> {
         padding: const EdgeInsets.all(16),
         child: Form(
             key: _formKey,
+            child: SingleChildScrollView(
             child: Column(
               children: [
                 _buildTextFormField(
@@ -208,7 +209,9 @@ class _EditarControleVooState extends State<EditarControleVoo> {
                   labelText: "Transponder de Emergencia",
                 ),
               ],
-            )),
+            )
+          ),
+        ),
       ),
     );
   }
